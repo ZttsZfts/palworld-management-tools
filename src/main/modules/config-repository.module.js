@@ -53,6 +53,7 @@ class ConfigRepository {
       password: String(input.password || ''),
       useHttps: Boolean(input.useHttps),
       supplementalDataPath: String(input.supplementalDataPath || '').trim(),
+      syncIntervalSeconds: Math.max(1, Number(input.syncIntervalSeconds) || 3),
       updatedAt: new Date().toISOString()
     };
   }

@@ -6,10 +6,11 @@
  * 2. Optional supplemental JSON for save-derived guild, Pal and inventory data.
  */
 class RemoteDataModule {
-  constructor(restClient, snapshotRepository, supplementalData) {
+  constructor(restClient, snapshotRepository, supplementalData, movementPaths) {
     this.restClient = restClient;
     this.snapshots = snapshotRepository;
     this.supplementalData = supplementalData;
+    this.movementPaths = movementPaths;
   }
 
   async sync(connection) {
@@ -36,6 +37,8 @@ class RemoteDataModule {
     const guilds = supplemental.available
       ? this.list(supplemental.guilds).map((item) => this.guild(item, players))
       : this.list(previous.guilds);
+
+    await this.movementPaths.record(connection.id, players);
 
     return this.snapshots.save(connection.id, {
       online: true,
@@ -91,6 +94,7 @@ class RemoteDataModule {
       ping: this.number(item.ping ?? cached.ping),
       x: this.number(item.location_x ?? item.locationX ?? cached.x),
       y: this.number(item.location_y ?? item.locationY ?? cached.y),
+      hasLocation: Number.isFinite(Number(item.location_x ?? item.locationX)) && Number.isFinite(Number(item.location_y ?? item.locationY)),
       buildingCount: this.number(item.building_count ?? cached.buildingCount),
       guildId: cached.guildId || '', guildName: cached.guildName || '',
       pals: this.list(cached.pals), items: this.list(cached.items)
@@ -117,7 +121,9 @@ class RemoteDataModule {
       steamName: item.accountName || item.steamName || '', level: this.number(item.level), online: false,
       lastOnlineAt: item.lastOnlineAt || null, platform: item.platform || this.platformOf(item.userId),
       steam64: String(item.steam64 || this.steam64Of(item.userId)), ip: item.ip || '', ping: 0,
-      x: this.number(item.location_x ?? item.x), y: this.number(item.location_y ?? item.y), pals: [], items: []
+      x: this.number(item.location_x ?? item.x), y: this.number(item.location_y ?? item.y),
+      hasLocation: Number.isFinite(Number(item.location_x ?? item.x)) && Number.isFinite(Number(item.location_y ?? item.y)),
+      pals: [], items: []
     }, item);
   }
 

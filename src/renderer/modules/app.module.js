@@ -9,6 +9,7 @@ window.ApplicationModule = class ApplicationModule {
     this.navigation = new window.NavigationModule(this.state);
     this.connections = new window.ConnectionsModule(this.api, this.state, this.modal);
     this.data = new window.DataModule(this.api, this.state, this.modal, this.navigation);
+    this.movement = new window.MovementModule(this.api, this.state, this.modal);
     this.remote = new window.RemoteModule(this.api, this.state, this.modal, this.navigation);
   }
 
@@ -16,6 +17,7 @@ window.ApplicationModule = class ApplicationModule {
     this.navigation.register();
     this.connections.register();
     this.data.register();
+    this.movement.register();
     this.remote.register();
     await this.connections.load();
     await this.data.load();

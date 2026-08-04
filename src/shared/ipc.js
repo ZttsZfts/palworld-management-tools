@@ -10,5 +10,6 @@ module.exports = Object.freeze({
   RCON_COMMAND: 'remote:rcon-command',
   SNAPSHOT_GET: 'snapshot:get',
   SNAPSHOT_SYNC: 'snapshot:sync',
-  BROADCAST_SEND: 'broadcast:send'
+  BROADCAST_SEND: 'broadcast:send',
+  MOVEMENT_GET: 'movement:get'
 });

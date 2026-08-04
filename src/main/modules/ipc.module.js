@@ -4,8 +4,8 @@ const { ipcMain } = require('electron');
 const IPC = require('../../shared/ipc');
 
 class IpcModule {
-  constructor({ app, repository, restClient, rconClient, snapshots, remoteData }) {
-    Object.assign(this, { app, repository, restClient, rconClient, snapshots, remoteData });
+  constructor({ app, repository, restClient, rconClient, snapshots, remoteData, movementPaths }) {
+    Object.assign(this, { app, repository, restClient, rconClient, snapshots, remoteData, movementPaths });
     this.channels = [];
   }
 
@@ -29,6 +29,10 @@ class IpcModule {
       if (!text) throw new Error('\u5e7f\u64ad\u5185\u5bb9\u4e0d\u80fd\u4e3a\u7a7a');
       if (text.length > 500) throw new Error('\u5e7f\u64ad\u5185\u5bb9\u4e0d\u80fd\u8d85\u8fc7 \u0035\u0030\u0030 \u4e2a\u5b57\u7b26');
       return this.restClient.request(await this.requireConnection(connectionId), { endpoint: '/announce', method: 'POST', body: { message: text } });
+    });
+    this.handleResult(IPC.MOVEMENT_GET, async (_event, { connectionId, ...options }) => {
+      await this.requireConnection(connectionId);
+      return this.movementPaths.getPaths(connectionId, options);
     });
   }
 

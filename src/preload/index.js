@@ -7,7 +7,8 @@ const IPC = Object.freeze({
   CONNECTION_SAVE: 'connection:save', CONNECTION_REMOVE: 'connection:remove',
   CONNECTION_TEST: 'connection:test', REST_REQUEST: 'remote:rest-request',
   RCON_COMMAND: 'remote:rcon-command', SNAPSHOT_GET: 'snapshot:get',
-  SNAPSHOT_SYNC: 'snapshot:sync', BROADCAST_SEND: 'broadcast:send'
+  SNAPSHOT_SYNC: 'snapshot:sync', BROADCAST_SEND: 'broadcast:send',
+  MOVEMENT_GET: 'movement:get'
 });
 
 // Convert the main-process result envelope back into a normal Promise API.
@@ -39,5 +40,6 @@ contextBridge.exposeInMainWorld('palworldAPI', {
   snapshots: {
     get: (connectionId) => ipcRenderer.invoke(IPC.SNAPSHOT_GET, connectionId),
     sync: (connectionId) => invokeResult(IPC.SNAPSHOT_SYNC, connectionId)
-  }
+  },
+  movement: { get: (request) => invokeResult(IPC.MOVEMENT_GET, request) }
 });

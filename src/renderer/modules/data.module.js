@@ -24,16 +24,17 @@ window.DataModule = class DataModule {
     $('#guild-members').on('click', '[data-player-id]', (event) => this.openPlayer($(event.currentTarget).data('player-id')));
     $('#player-summary').on('click', '[data-guild-id]', (event) => this.openGuild($(event.currentTarget).data('guild-id')));
     $(document).on('connection:changed', (_event, id) => this.load(id));
-    this.timer = setInterval(() => { if (!document.hidden) this.sync(false); }, 30000);
   }
 
   async load(connectionId = this.state.get('activeConnectionId')) {
+    clearTimeout(this.timer);
     if (!connectionId) { this.state.set('snapshot', null); this.renderAll(); return; }
     try {
       this.state.set('snapshot', await this.api.snapshots.get(connectionId));
       this.renderAll();
       await this.sync(false);
     } catch (error) { this.modal.message('缓存读取失败', this.error(error), 'database-x'); }
+    finally { this.scheduleAutoSync(); }
   }
 
   async sync(showFeedback) {
@@ -47,6 +48,7 @@ window.DataModule = class DataModule {
       if (connectionId !== this.state.get('activeConnectionId')) return;
       this.state.set('snapshot', snapshot);
       this.renderAll();
+      $(document).trigger('snapshot:updated');
       if (showFeedback) this.modal.toast('服务器数据与本地 JSON 缓存已更新');
     } catch (error) {
       this.markCached();
@@ -54,7 +56,19 @@ window.DataModule = class DataModule {
     } finally {
       this.syncing = false;
       $('[data-action="sync"] i, [data-action="refresh"] i').removeClass('spin');
+      this.scheduleAutoSync();
     }
+  }
+
+  scheduleAutoSync() {
+    clearTimeout(this.timer);
+    const connection = this.state.getActiveConnection();
+    if (!connection) return;
+    const milliseconds = Math.max(1000, (Number(connection.syncIntervalSeconds) || 3) * 1000);
+    this.timer = setTimeout(() => {
+      if (document.hidden) this.scheduleAutoSync();
+      else this.sync(false);
+    }, milliseconds);
   }
 
   renderAll() {

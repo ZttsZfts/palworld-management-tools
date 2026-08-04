@@ -8,6 +8,7 @@ const { RestClient } = require('./rest-client.module');
 const { RemoteDataModule } = require('./remote-data.module');
 const { SnapshotRepository } = require('./snapshot-repository.module');
 const { SupplementalDataModule } = require('./supplemental-data.module');
+const { MovementPathRepository } = require('./movement-path-repository.module');
 const { TemplateRenderer } = require('./template-renderer.module');
 const { WindowModule } = require('./window.module');
 
@@ -22,6 +23,7 @@ class AppRuntime {
     const repository = new ConfigRepository(this.app);
     const snapshots = new SnapshotRepository(this.app);
     const restClient = new RestClient();
+    const movementPaths = new MovementPathRepository(this.app);
     const renderer = new TemplateRenderer(this.app);
     this.windowModule = new WindowModule(this.app, renderer);
     this.ipc = new IpcModule({
@@ -30,7 +32,8 @@ class AppRuntime {
       restClient,
       rconClient: new RconClient(),
       snapshots,
-      remoteData: new RemoteDataModule(restClient, snapshots, new SupplementalDataModule())
+      movementPaths,
+      remoteData: new RemoteDataModule(restClient, snapshots, new SupplementalDataModule(this.app), movementPaths)
     });
   }
 

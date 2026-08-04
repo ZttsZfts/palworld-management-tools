@@ -39,6 +39,7 @@ window.ConnectionsModule = class ConnectionsModule {
       this.modal.hideConnection();
       this.state.set('activeConnectionId', saved.id);
       await this.load();
+      $(document).trigger('connection:changed', [saved.id]);
       this.modal.toast('服务器连接已保存');
     } catch (error) { this.modal.message('无法保存', this.error(error), 'x-lg'); }
   }
@@ -75,7 +76,7 @@ window.ConnectionsModule = class ConnectionsModule {
 
   card(item) {
     const active = item.id === this.state.get('activeConnectionId');
-    return `<article class="server-card-item" data-server-id="${this.escape(item.id)}"><div class="server-card-head"><span class="server-avatar"><i class="bi bi-hdd-rack"></i></span><span class="soft-badge ${active ? 'success' : ''}">${active ? '当前' : '已保存'}</span></div><h3>${this.escape(item.name)}</h3><div class="server-address">${this.escape(item.host)}</div><div class="server-meta"><span>REST ${item.restPort}</span><span>RCON ${item.rconPort}</span><span>${item.supplementalDataPath ? '扩展数据已配置' : '仅官方 REST'}</span></div><div class="server-actions"><button class="btn btn-surface" data-server-action="select">选择</button><button class="icon-button" data-server-action="edit"><i class="bi bi-pencil"></i></button><button class="icon-button" data-server-action="remove"><i class="bi bi-trash3"></i></button></div></article>`;
+    return `<article class="server-card-item" data-server-id="${this.escape(item.id)}"><div class="server-card-head"><span class="server-avatar"><i class="bi bi-hdd-rack"></i></span><span class="soft-badge ${active ? 'success' : ''}">${active ? '当前' : '已保存'}</span></div><h3>${this.escape(item.name)}</h3><div class="server-address">${this.escape(item.host)}</div><div class="server-meta"><span>REST ${item.restPort}</span><span>同步 ${Math.max(1, Number(item.syncIntervalSeconds) || 3)}秒</span><span>${item.supplementalDataPath ? '扩展数据已配置' : '仅官方 REST'}</span></div><div class="server-actions"><button class="btn btn-surface" data-server-action="select">选择</button><button class="icon-button" data-server-action="edit"><i class="bi bi-pencil"></i></button><button class="icon-button" data-server-action="remove"><i class="bi bi-trash3"></i></button></div></article>`;
   }
 
   escape(value) { return $('<div>').text(String(value ?? '')).html(); }

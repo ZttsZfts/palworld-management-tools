@@ -25,6 +25,7 @@ class TemplateRenderer {
         { id: 'servers', icon: 'hdd-rack', label: '服务器' },
         { id: 'players', icon: 'people', label: '玩家' },
         { id: 'guilds', icon: 'shield-shaded', label: '公会' },
+        { id: 'movement', icon: 'map', label: '移动轨迹' },
         { id: 'console', icon: 'terminal', label: '控制台' },
         { id: 'backups', icon: 'archive', label: '备份' },
         { id: 'settings', icon: 'sliders', label: '设置' }

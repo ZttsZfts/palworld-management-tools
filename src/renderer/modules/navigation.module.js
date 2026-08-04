@@ -3,7 +3,7 @@
 window.NavigationModule = class NavigationModule {
   constructor(state) {
     this.state = state;
-    this.titles = { dashboard: '服务器概览', servers: '服务器', players: '玩家档案', guilds: '公会', console: 'RCON 控制台', backups: '备份', settings: '设置' };
+    this.titles = { dashboard: '服务器概览', servers: '服务器', players: '玩家档案', guilds: '公会', movement: '玩家移动轨迹', console: 'RCON 控制台', backups: '备份', settings: '设置' };
   }
 
   register() {

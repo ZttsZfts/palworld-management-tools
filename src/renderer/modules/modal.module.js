@@ -44,6 +44,7 @@ window.ModalModule = class ModalModule {
     form.elements.username.value = connection?.username || 'admin';
     form.elements.password.value = connection?.password || '';
     form.elements.supplementalDataPath.value = connection?.supplementalDataPath || '';
+    form.elements.syncIntervalSeconds.value = Math.max(1, Number(connection?.syncIntervalSeconds) || 3);
     form.elements.useHttps.checked = Boolean(connection?.useHttps);
     $('#connection-modal .modal-title').text(connection ? '编辑服务器' : '添加服务器');
     this.connectionModal.show();
