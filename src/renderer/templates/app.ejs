@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' file:; script-src 'self' file:; style-src 'self' file: 'unsafe-inline'; font-src 'self' file: data:; img-src 'self' file: data:">
+  <title><%= appName %></title>
+  <link rel="stylesheet" href="<%= asset('node_modules/bootstrap/dist/css/bootstrap.min.css') %>">
+  <link rel="stylesheet" href="<%= asset('node_modules/bootstrap-icons/font/bootstrap-icons.min.css') %>">
+  <link rel="stylesheet" href="<%= asset('src/renderer/assets/css/app.css') %>">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-mark"><i class="bi bi-hexagon-fill"></i></span>
+        <span><strong>Palworld</strong><small>Server Studio</small></span>
+      </div>
+      <nav class="app-nav" aria-label="主导航">
+        <span class="nav-caption">工作台</span>
+        <% pages.forEach((page, index) => { %>
+          <button class="nav-item <%= index === 0 ? 'active' : '' %>" data-page="<%= page.id %>" type="button">
+            <i class="bi bi-<%= page.icon %>"></i><span><%= page.label %></span>
+          </button>
+        <% }) %>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="connection-dot"></div>
+        <div><strong id="sidebar-server">未选择服务器</strong><small id="sidebar-status">等待连接</small></div>
+      </div>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <div>
+          <span class="breadcrumb-label">PALWORLD SERVER STUDIO</span>
+          <h1 id="page-title">服务器概览</h1>
+        </div>
+        <div class="topbar-actions">
+          <select id="active-connection" class="form-select form-select-sm" aria-label="当前服务器">
+            <option value="">选择服务器</option>
+          </select>
+          <button class="icon-button" data-action="sync" type="button" title="刷新"><i class="bi bi-arrow-clockwise"></i></button>
+          <button class="btn btn-primary btn-sm px-3" data-action="new-connection" type="button"><i class="bi bi-plus-lg me-1"></i>添加服务器</button>
+        </div>
+      </header>
+      <div class="content-area">
+        <%- include('partials/pages') %>
+      </div>
+    </main>
+  </div>
+
+  <div class="toast-container position-fixed top-0 end-0 p-4">
+    <div id="app-toast" class="toast app-toast border-0" role="status">
+      <div class="d-flex"><div class="toast-body"></div><button class="btn-close btn-close-white m-auto me-2" data-bs-dismiss="toast"></button></div>
+    </div>
+  </div>
+  <%- include('partials/modals') %>
+
+  <script src="<%= asset('node_modules/jquery/dist/jquery.min.js') %>"></script>
+  <script src="<%= asset('node_modules/bootstrap/dist/js/bootstrap.bundle.min.js') %>"></script>
+  <script src="<%= asset('src/renderer/modules/state.module.js') %>"></script>
+  <script src="<%= asset('src/renderer/modules/modal.module.js') %>"></script>
+  <script src="<%= asset('src/renderer/modules/navigation.module.js') %>"></script>
+  <script src="<%= asset('src/renderer/modules/connections.module.js') %>"></script>
+  <script src="<%= asset('src/renderer/modules/data.module.js') %>"></script>
+  <script src="<%= asset('src/renderer/modules/remote.module.js') %>"></script>
+  <script src="<%= asset('src/renderer/modules/app.module.js') %>"></script>
+  <script src="<%= asset('src/renderer/main.js') %>"></script>
+</body>
+</html>

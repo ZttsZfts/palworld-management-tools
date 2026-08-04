@@ -1,0 +1,9 @@
+node_modules/
+.pnpm-store/
+release/
+dist/
+dist-renderer/
+.vite/
+*.log
+.env
+.idea/
