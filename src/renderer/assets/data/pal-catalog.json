@@ -1,0 +1,2018 @@
+[
+  {
+    "id": "SheepBall",
+    "paldeckNo": "1",
+    "nameZh": "棉悠悠",
+    "nameEn": "Lamball",
+    "icon": "../images/pals/SheepBall.webp"
+  },
+  {
+    "id": "PinkCat",
+    "paldeckNo": "2",
+    "nameZh": "捣蛋猫",
+    "nameEn": "Cattiva",
+    "icon": "../images/pals/PinkCat.webp"
+  },
+  {
+    "id": "ChickenPal",
+    "paldeckNo": "3",
+    "nameZh": "皮皮鸡",
+    "nameEn": "Chikipi",
+    "icon": "../images/pals/ChickenPal.webp"
+  },
+  {
+    "id": "Carbunclo",
+    "paldeckNo": "4",
+    "nameZh": "翠叶鼠",
+    "nameEn": "Lifmunk",
+    "icon": "../images/pals/Carbunclo.webp"
+  },
+  {
+    "id": "BluePlatypus",
+    "paldeckNo": "5",
+    "nameZh": "冲浪鸭",
+    "nameEn": "Fuack",
+    "icon": "../images/pals/BluePlatypus.webp"
+  },
+  {
+    "id": "BluePlatypus_Fire",
+    "paldeckNo": "5B",
+    "nameZh": "热浪鸭",
+    "nameEn": "Fuack Ignis",
+    "icon": "../images/pals/BluePlatypus_Fire.webp"
+  },
+  {
+    "id": "CuteFox",
+    "paldeckNo": "6",
+    "nameZh": "玉藻狐",
+    "nameEn": "Vixy",
+    "icon": "../images/pals/CuteFox.webp"
+  },
+  {
+    "id": "FlyingManta",
+    "paldeckNo": "7",
+    "nameZh": "鲁米儿",
+    "nameEn": "Celaray",
+    "icon": "../images/pals/FlyingManta.webp"
+  },
+  {
+    "id": "FlyingManta_Thunder",
+    "paldeckNo": "7B",
+    "nameZh": "雷米儿",
+    "nameEn": "Celaray Lux",
+    "icon": "../images/pals/FlyingManta_Thunder.webp"
+  },
+  {
+    "id": "WoolFox",
+    "paldeckNo": "8",
+    "nameZh": "米露菲",
+    "nameEn": "Cremis",
+    "icon": "../images/pals/WoolFox.webp"
+  },
+  {
+    "id": "KendoFrog",
+    "paldeckNo": "9",
+    "nameZh": "武道蛙",
+    "nameEn": "Croajiro",
+    "icon": "../images/pals/KendoFrog.webp"
+  },
+  {
+    "id": "KendoFrog_Dark",
+    "paldeckNo": "9B",
+    "nameZh": "极道蛙",
+    "nameEn": "Croajiro Noct",
+    "icon": "../images/pals/KendoFrog_Dark.webp"
+  },
+  {
+    "id": "LeafMomonga",
+    "paldeckNo": "10",
+    "nameZh": "达鼠泥",
+    "nameEn": "Herbil",
+    "icon": "../images/pals/LeafMomonga.webp"
+  },
+  {
+    "id": "Ganesha",
+    "paldeckNo": "11",
+    "nameZh": "壶小象",
+    "nameEn": "Teafant",
+    "icon": "../images/pals/Ganesha.webp"
+  },
+  {
+    "id": "PlantSlime",
+    "paldeckNo": "12",
+    "nameZh": "叶泥泥",
+    "nameEn": "Gumoss",
+    "icon": "../images/pals/PlantSlime.webp"
+  },
+  {
+    "id": "SamuraiDog",
+    "paldeckNo": "13",
+    "nameZh": "宗铭丸",
+    "nameEn": "Pupperai",
+    "icon": "../images/pals/SamuraiDog.png"
+  },
+  {
+    "id": "CloverFairy",
+    "paldeckNo": "14",
+    "nameZh": "幸叶茸",
+    "nameEn": "Clovee",
+    "icon": "../images/pals/CloverFairy.png"
+  },
+  {
+    "id": "Hedgehog",
+    "paldeckNo": "15",
+    "nameZh": "电棘鼠",
+    "nameEn": "Jolthog",
+    "icon": "../images/pals/Hedgehog.webp"
+  },
+  {
+    "id": "Hedgehog_Ice",
+    "paldeckNo": "15B",
+    "nameZh": "冰刺鼠",
+    "nameEn": "Jolthog Cryst",
+    "icon": "../images/pals/Hedgehog_Ice.webp"
+  },
+  {
+    "id": "NegativeKoala",
+    "paldeckNo": "16",
+    "nameZh": "瞅什魔",
+    "nameEn": "Depresso",
+    "icon": "../images/pals/NegativeKoala.webp"
+  },
+  {
+    "id": "Penguin",
+    "paldeckNo": "17",
+    "nameZh": "企丸丸",
+    "nameEn": "Pengullet",
+    "icon": "../images/pals/Penguin.webp"
+  },
+  {
+    "id": "Penguin_Electric",
+    "paldeckNo": "17B",
+    "nameZh": "闪丸丸",
+    "nameEn": "Pengullet Lux",
+    "icon": "../images/pals/Penguin_Electric.webp"
+  },
+  {
+    "id": "CaptainPenguin",
+    "paldeckNo": "18",
+    "nameZh": "企丸王",
+    "nameEn": "Penking",
+    "icon": "../images/pals/CaptainPenguin.webp"
+  },
+  {
+    "id": "CaptainPenguin_Black",
+    "paldeckNo": "18B",
+    "nameZh": "闪丸王",
+    "nameEn": "Penking Lux",
+    "icon": "../images/pals/CaptainPenguin_Black.webp"
+  },
+  {
+    "id": "WizardOwl",
+    "paldeckNo": "19",
+    "nameZh": "啼卡尔",
+    "nameEn": "Hoocrates",
+    "icon": "../images/pals/WizardOwl.webp"
+  },
+  {
+    "id": "Alpaca",
+    "paldeckNo": "20",
+    "nameZh": "美露帕",
+    "nameEn": "Melpaca",
+    "icon": "../images/pals/Alpaca.png"
+  },
+  {
+    "id": "KingAlpaca",
+    "paldeckNo": "21",
+    "nameZh": "君王美露帕",
+    "nameEn": "Kingpaca",
+    "icon": "../images/pals/KingAlpaca.webp"
+  },
+  {
+    "id": "KingAlpaca_Ice",
+    "paldeckNo": "21B",
+    "nameZh": "冰帝美露帕",
+    "nameEn": "Kingpaca Cryst",
+    "icon": "../images/pals/KingAlpaca_Ice.webp"
+  },
+  {
+    "id": "DreamDemon",
+    "paldeckNo": "22",
+    "nameZh": "寐魔",
+    "nameEn": "Daedream",
+    "icon": "../images/pals/DreamDemon.webp"
+  },
+  {
+    "id": "Monkey",
+    "paldeckNo": "23",
+    "nameZh": "新叶猿",
+    "nameEn": "Tanzee",
+    "icon": "../images/pals/Monkey.webp"
+  },
+  {
+    "id": "Monkey_Fire",
+    "paldeckNo": "23B",
+    "nameZh": "秋叶猿",
+    "nameEn": "Tanzee Ignis",
+    "icon": "../images/pals/Monkey_Fire.png"
+  },
+  {
+    "id": "NightFox",
+    "paldeckNo": "24",
+    "nameZh": "露娜蒂",
+    "nameEn": "Nox",
+    "icon": "../images/pals/NightFox.webp"
+  },
+  {
+    "id": "LavaGirl",
+    "paldeckNo": "25",
+    "nameZh": "融焰娘",
+    "nameEn": "Flambelle",
+    "icon": "../images/pals/LavaGirl.webp"
+  },
+  {
+    "id": "FlameBambi",
+    "paldeckNo": "26",
+    "nameZh": "燎火鹿",
+    "nameEn": "Rooby",
+    "icon": "../images/pals/FlameBambi.webp"
+  },
+  {
+    "id": "Bastet",
+    "paldeckNo": "27",
+    "nameZh": "喵丝特",
+    "nameEn": "Mau",
+    "icon": "../images/pals/Bastet.webp"
+  },
+  {
+    "id": "Bastet_Ice",
+    "paldeckNo": "27B",
+    "nameZh": "冰丝特",
+    "nameEn": "Mau Cryst",
+    "icon": "../images/pals/Bastet_Ice.webp"
+  },
+  {
+    "id": "Boar",
+    "paldeckNo": "28",
+    "nameZh": "草莽猪",
+    "nameEn": "Rushoar",
+    "icon": "../images/pals/Boar.webp"
+  },
+  {
+    "id": "Kitsunebi",
+    "paldeckNo": "29",
+    "nameZh": "火绒狐",
+    "nameEn": "Foxparks",
+    "icon": "../images/pals/Kitsunebi.webp"
+  },
+  {
+    "id": "Kitsunebi_Ice",
+    "paldeckNo": "29B",
+    "nameZh": "雪绒狐",
+    "nameEn": "Foxparks Cryst",
+    "icon": "../images/pals/Kitsunebi_Ice.webp"
+  },
+  {
+    "id": "NegativeOctopus",
+    "paldeckNo": "30",
+    "nameZh": "勾魂鱿",
+    "nameEn": "Killamari",
+    "icon": "../images/pals/NegativeOctopus.webp"
+  },
+  {
+    "id": "NegativeOctopus_Neutral",
+    "paldeckNo": "30B",
+    "nameZh": "蚀魂鱿",
+    "nameEn": "Killamari Primo",
+    "icon": "../images/pals/NegativeOctopus_Neutral.webp"
+  },
+  {
+    "id": "CuteMole",
+    "paldeckNo": "31",
+    "nameZh": "遁地鼠",
+    "nameEn": "Fuddler",
+    "icon": "../images/pals/CuteMole.webp"
+  },
+  {
+    "id": "Deer",
+    "paldeckNo": "32",
+    "nameZh": "紫霞鹿",
+    "nameEn": "Eikthyrdeer",
+    "icon": "../images/pals/Deer.png"
+  },
+  {
+    "id": "Deer_Ground",
+    "paldeckNo": "32B",
+    "nameZh": "祇岳鹿",
+    "nameEn": "Eikthyrdeer Terra",
+    "icon": "../images/pals/Deer_Ground.png"
+  },
+  {
+    "id": "Garm",
+    "paldeckNo": "33",
+    "nameZh": "猎狼",
+    "nameEn": "Direhowl",
+    "icon": "../images/pals/Garm.png"
+  },
+  {
+    "id": "BerryGoat",
+    "paldeckNo": "34",
+    "nameZh": "灌木羊",
+    "nameEn": "Caprity",
+    "icon": "../images/pals/BerryGoat.webp"
+  },
+  {
+    "id": "BerryGoat_Dark",
+    "paldeckNo": "34B",
+    "nameZh": "郁木羊",
+    "nameEn": "Caprity Noct",
+    "icon": "../images/pals/BerryGoat_Dark.webp"
+  },
+  {
+    "id": "MopBaby",
+    "paldeckNo": "35",
+    "nameZh": "毛掸儿",
+    "nameEn": "Swee",
+    "icon": "../images/pals/MopBaby.webp"
+  },
+  {
+    "id": "MopKing",
+    "paldeckNo": "36",
+    "nameZh": "毛老爹",
+    "nameEn": "Sweepa",
+    "icon": "../images/pals/MopKing.webp"
+  },
+  {
+    "id": "TentacleTurtle",
+    "paldeckNo": "37",
+    "nameZh": "盔盔仔",
+    "nameEn": "Turtacle",
+    "icon": "../images/pals/TentacleTurtle.webp"
+  },
+  {
+    "id": "TentacleTurtle_Ground",
+    "paldeckNo": "37B",
+    "nameZh": "金盔仔",
+    "nameEn": "Turtacle Terra",
+    "icon": "../images/pals/TentacleTurtle_Ground.webp"
+  },
+  {
+    "id": "WindChimes",
+    "paldeckNo": "38",
+    "nameZh": "吊缚灵",
+    "nameEn": "Hangyu",
+    "icon": "../images/pals/WindChimes.webp"
+  },
+  {
+    "id": "WindChimes_Ice",
+    "paldeckNo": "38B",
+    "nameZh": "冰缚灵",
+    "nameEn": "Hangyu Cryst",
+    "icon": "../images/pals/WindChimes_Ice.webp"
+  },
+  {
+    "id": "SweetsSheep",
+    "paldeckNo": "39",
+    "nameZh": "棉花糖",
+    "nameEn": "Woolipop",
+    "icon": "../images/pals/SweetsSheep.webp"
+  },
+  {
+    "id": "SweetsSheep_Ground",
+    "paldeckNo": "39B",
+    "nameZh": "可可棉花糖",
+    "nameEn": "Woolipop Terra",
+    "icon": "../images/pals/SweetsSheep_Ground.png"
+  },
+  {
+    "id": "CowPal",
+    "paldeckNo": "40",
+    "nameZh": "波霸牛",
+    "nameEn": "Mozzarina",
+    "icon": "../images/pals/CowPal.webp"
+  },
+  {
+    "id": "BlueDragon",
+    "paldeckNo": "41",
+    "nameZh": "碧海龙",
+    "nameEn": "Azurobe",
+    "icon": "../images/pals/BlueDragon.webp"
+  },
+  {
+    "id": "BlueDragon_Ice",
+    "paldeckNo": "41B",
+    "nameZh": "碧月龙",
+    "nameEn": "Azurobe Cryst",
+    "icon": "../images/pals/BlueDragon_Ice.webp"
+  },
+  {
+    "id": "ElecCat",
+    "paldeckNo": "42",
+    "nameZh": "伏特喵",
+    "nameEn": "Sparkit",
+    "icon": "../images/pals/ElecCat.webp"
+  },
+  {
+    "id": "Kelpie",
+    "paldeckNo": "43",
+    "nameZh": "水灵儿",
+    "nameEn": "Kelpsea",
+    "icon": "../images/pals/Kelpie.webp"
+  },
+  {
+    "id": "Kelpie_Fire",
+    "paldeckNo": "43B",
+    "nameZh": "火灵儿",
+    "nameEn": "Kelpsea Ignis",
+    "icon": "../images/pals/Kelpie_Fire.webp"
+  },
+  {
+    "id": "PinkRabbit",
+    "paldeckNo": "44",
+    "nameZh": "姬小兔",
+    "nameEn": "Ribbuny",
+    "icon": "../images/pals/PinkRabbit.webp"
+  },
+  {
+    "id": "PinkRabbit_Grass",
+    "paldeckNo": "44B",
+    "nameZh": "艾小兔",
+    "nameEn": "Ribbuny Botan",
+    "icon": "../images/pals/PinkRabbit_Grass.webp"
+  },
+  {
+    "id": "JellyfishFairy",
+    "paldeckNo": "45",
+    "nameZh": "海月仙",
+    "nameEn": "Jelliette",
+    "icon": "../images/pals/JellyfishFairy.webp"
+  },
+  {
+    "id": "JellyfishGhost",
+    "paldeckNo": "46",
+    "nameZh": "海月灵",
+    "nameEn": "Jellroy",
+    "icon": "../images/pals/JellyfishGhost.webp"
+  },
+  {
+    "id": "ClioneTwins",
+    "paldeckNo": "47",
+    "nameZh": "莉欧·莉涅",
+    "nameEn": "Amione",
+    "icon": "../images/pals/ClioneTwins.png"
+  },
+  {
+    "id": "OctopusGirl",
+    "paldeckNo": "48",
+    "nameZh": "墨沫姬",
+    "nameEn": "Gloopie",
+    "icon": "../images/pals/OctopusGirl.webp"
+  },
+  {
+    "id": "OctopusGirl_Neutral",
+    "paldeckNo": "48B",
+    "nameZh": "梦沫姬",
+    "nameEn": "Gloopie Primo",
+    "icon": "../images/pals/OctopusGirl_Neutral.png"
+  },
+  {
+    "id": "Eagle",
+    "paldeckNo": "49",
+    "nameZh": "天擒鸟",
+    "nameEn": "Galeclaw",
+    "icon": "../images/pals/Eagle.webp"
+  },
+  {
+    "id": "GhostBlackCat",
+    "paldeckNo": "50",
+    "nameZh": "念影喵",
+    "nameEn": "Wispaw",
+    "icon": "../images/pals/GhostBlackCat.png"
+  },
+  {
+    "id": "HawkBird",
+    "paldeckNo": "51",
+    "nameZh": "疾风隼",
+    "nameEn": "Nitewing",
+    "icon": "../images/pals/HawkBird.webp"
+  },
+  {
+    "id": "CatBat",
+    "paldeckNo": "52",
+    "nameZh": "猫蝠怪",
+    "nameEn": "Tombat",
+    "icon": "../images/pals/CatBat.webp"
+  },
+  {
+    "id": "ColorfulBird",
+    "paldeckNo": "53",
+    "nameZh": "炸蛋鸟",
+    "nameEn": "Tocotoco",
+    "icon": "../images/pals/ColorfulBird.webp"
+  },
+  {
+    "id": "Kirin",
+    "paldeckNo": "54",
+    "nameZh": "雷角马",
+    "nameEn": "Univolt",
+    "icon": "../images/pals/Kirin.webp"
+  },
+  {
+    "id": "Kirin_Ice",
+    "paldeckNo": "54B",
+    "nameZh": "凌角马",
+    "nameEn": "Univolt Cryst",
+    "icon": "../images/pals/Kirin_Ice.png"
+  },
+  {
+    "id": "SharkKid",
+    "paldeckNo": "55",
+    "nameZh": "鲨小子",
+    "nameEn": "Gobfin",
+    "icon": "../images/pals/SharkKid.webp"
+  },
+  {
+    "id": "SharkKid_Fire",
+    "paldeckNo": "55B",
+    "nameZh": "红小鲨",
+    "nameEn": "Gobfin Ignis",
+    "icon": "../images/pals/SharkKid_Fire.webp"
+  },
+  {
+    "id": "Werewolf",
+    "paldeckNo": "56",
+    "nameZh": "月镰魔",
+    "nameEn": "Loupmoon",
+    "icon": "../images/pals/Werewolf.webp"
+  },
+  {
+    "id": "Werewolf_Ice",
+    "paldeckNo": "56B",
+    "nameZh": "霜镰魔",
+    "nameEn": "Loupmoon Cryst",
+    "icon": "../images/pals/Werewolf_Ice.webp"
+  },
+  {
+    "id": "DarkCrow",
+    "paldeckNo": "57",
+    "nameZh": "黑鸦隐士",
+    "nameEn": "Cawgnito",
+    "icon": "../images/pals/DarkCrow.webp"
+  },
+  {
+    "id": "FlameBuffalo",
+    "paldeckNo": "58",
+    "nameZh": "炽焰牛",
+    "nameEn": "Arsox",
+    "icon": "../images/pals/FlameBuffalo.webp"
+  },
+  {
+    "id": "FluffyBird",
+    "paldeckNo": "59",
+    "nameZh": "雪绵啾",
+    "nameEn": "Muffly",
+    "icon": "../images/pals/FluffyBird.png"
+  },
+  {
+    "id": "LittleBriarRose",
+    "paldeckNo": "60",
+    "nameZh": "荊棘魔仙",
+    "nameEn": "Bristla",
+    "icon": "../images/pals/LittleBriarRose.webp"
+  },
+  {
+    "id": "CuteButterfly",
+    "paldeckNo": "61",
+    "nameZh": "幻悦蝶",
+    "nameEn": "Cinnamoth",
+    "icon": "../images/pals/CuteButterfly.webp"
+  },
+  {
+    "id": "ElecPomeranian",
+    "paldeckNo": "62",
+    "nameZh": "电汪汪",
+    "nameEn": "Puffolt",
+    "icon": "../images/pals/ElecPomeranian.png"
+  },
+  {
+    "id": "FairyDragon",
+    "paldeckNo": "63",
+    "nameZh": "精灵龙",
+    "nameEn": "Elphidran",
+    "icon": "../images/pals/FairyDragon.webp"
+  },
+  {
+    "id": "FairyDragon_Water",
+    "paldeckNo": "63B",
+    "nameZh": "水灵龙",
+    "nameEn": "Elphidran Aqua",
+    "icon": "../images/pals/FairyDragon_Water.webp"
+  },
+  {
+    "id": "BirdDragon",
+    "paldeckNo": "64",
+    "nameZh": "烽歌龙",
+    "nameEn": "Vanwyrm",
+    "icon": "../images/pals/BirdDragon.webp"
+  },
+  {
+    "id": "BirdDragon_Ice",
+    "paldeckNo": "64B",
+    "nameZh": "霜歌龙",
+    "nameEn": "Vanwyrm Cryst",
+    "icon": "../images/pals/BirdDragon_Ice.webp"
+  },
+  {
+    "id": "CatVampire",
+    "paldeckNo": "65",
+    "nameZh": "夜幕魔蝠",
+    "nameEn": "Felbat",
+    "icon": "../images/pals/CatVampire.webp"
+  },
+  {
+    "id": "VioletFairy",
+    "paldeckNo": "66",
+    "nameZh": "薇莉塔",
+    "nameEn": "Vaelet",
+    "icon": "../images/pals/VioletFairy.webp"
+  },
+  {
+    "id": "SoldierBee",
+    "paldeckNo": "67",
+    "nameZh": "骑士蜂",
+    "nameEn": "Beegarde",
+    "icon": "../images/pals/SoldierBee.webp"
+  },
+  {
+    "id": "QueenBee",
+    "paldeckNo": "68",
+    "nameZh": "女皇蜂",
+    "nameEn": "Elizabee",
+    "icon": "../images/pals/QueenBee.webp"
+  },
+  {
+    "id": "PinkLizard",
+    "paldeckNo": "69",
+    "nameZh": "博爱蜥",
+    "nameEn": "Lovander",
+    "icon": "../images/pals/PinkLizard.webp"
+  },
+  {
+    "id": "NaughtyCat",
+    "paldeckNo": "70",
+    "nameZh": "笑魇猫",
+    "nameEn": "Grintale",
+    "icon": "../images/pals/NaughtyCat.webp"
+  },
+  {
+    "id": "PurpleSpider",
+    "paldeckNo": "71",
+    "nameZh": "桃蛛娘",
+    "nameEn": "Tarantriss",
+    "icon": "../images/pals/PurpleSpider.webp"
+  },
+  {
+    "id": "IceSeal",
+    "paldeckNo": "72",
+    "nameZh": "香草豹冰",
+    "nameEn": "Polapup",
+    "icon": "../images/pals/IceSeal.webp"
+  },
+  {
+    "id": "IceSeal_Ground",
+    "paldeckNo": "72B",
+    "nameZh": "巧克力豹冰",
+    "nameEn": "Polapup Terra",
+    "icon": "../images/pals/IceSeal_Ground.png"
+  },
+  {
+    "id": "LizardMan",
+    "paldeckNo": "73",
+    "nameZh": "朋克蜥",
+    "nameEn": "Leezpunk",
+    "icon": "../images/pals/LizardMan.webp"
+  },
+  {
+    "id": "LizardMan_Fire",
+    "paldeckNo": "73B",
+    "nameZh": "热血蜥",
+    "nameEn": "Leezpunk Ignis",
+    "icon": "../images/pals/LizardMan_Fire.webp"
+  },
+  {
+    "id": "Gorilla",
+    "paldeckNo": "74",
+    "nameZh": "铁拳猿",
+    "nameEn": "Gorirat",
+    "icon": "../images/pals/Gorilla.webp"
+  },
+  {
+    "id": "Gorilla_Ground",
+    "paldeckNo": "74B",
+    "nameZh": "石掌猿",
+    "nameEn": "Gorirat Terra",
+    "icon": "../images/pals/Gorilla_Ground.webp"
+  },
+  {
+    "id": "Serpent",
+    "paldeckNo": "75",
+    "nameZh": "滑水蛇",
+    "nameEn": "Surfent",
+    "icon": "../images/pals/Serpent.webp"
+  },
+  {
+    "id": "Serpent_Ground",
+    "paldeckNo": "75B",
+    "nameZh": "流沙蛇",
+    "nameEn": "Surfent Terra",
+    "icon": "../images/pals/Serpent_Ground.webp"
+  },
+  {
+    "id": "RobinHood",
+    "paldeckNo": "76",
+    "nameZh": "羽箭射手",
+    "nameEn": "Robinquill",
+    "icon": "../images/pals/RobinHood.webp"
+  },
+  {
+    "id": "RobinHood_Ground",
+    "paldeckNo": "76B",
+    "nameZh": "山岳射手",
+    "nameEn": "Robinquill Terra",
+    "icon": "../images/pals/RobinHood_Ground.webp"
+  },
+  {
+    "id": "FlowerRabbit",
+    "paldeckNo": "77",
+    "nameZh": "波娜兔",
+    "nameEn": "Flopie",
+    "icon": "../images/pals/FlowerRabbit.webp"
+  },
+  {
+    "id": "FoxMage",
+    "paldeckNo": "78",
+    "nameZh": "焰巫狐",
+    "nameEn": "Wixen",
+    "icon": "../images/pals/FoxMage.webp"
+  },
+  {
+    "id": "FoxMage_Dark",
+    "paldeckNo": "78B",
+    "nameZh": "幽巫狐",
+    "nameEn": "Wixen Noct",
+    "icon": "../images/pals/FoxMage_Dark.webp"
+  },
+  {
+    "id": "CatMage",
+    "paldeckNo": "79",
+    "nameZh": "暗巫猫",
+    "nameEn": "Katress",
+    "icon": "../images/pals/CatMage.webp"
+  },
+  {
+    "id": "CatMage_Fire",
+    "paldeckNo": "79B",
+    "nameZh": "炽巫猫",
+    "nameEn": "Katress Ignis",
+    "icon": "../images/pals/CatMage_Fire.webp"
+  },
+  {
+    "id": "HadesBird",
+    "paldeckNo": "80",
+    "nameZh": "雷冥鸟",
+    "nameEn": "Helzephyr",
+    "icon": "../images/pals/HadesBird.webp"
+  },
+  {
+    "id": "HadesBird_Electric",
+    "paldeckNo": "80B",
+    "nameZh": "雷鸣鸟",
+    "nameEn": "Helzephyr Lux",
+    "icon": "../images/pals/HadesBird_Electric.webp"
+  },
+  {
+    "id": "GrassMinotaur",
+    "paldeckNo": "81",
+    "nameZh": "密林陶洛斯",
+    "nameEn": "Elgrove",
+    "icon": "../images/pals/GrassMinotaur.png"
+  },
+  {
+    "id": "GrassMinotaur_Ice",
+    "paldeckNo": "81B",
+    "nameZh": "冰峰陶洛斯",
+    "nameEn": "Elgrove Cryst",
+    "icon": "../images/pals/GrassMinotaur_Ice.png"
+  },
+  {
+    "id": "Mutant",
+    "paldeckNo": "82",
+    "nameZh": "秘斯媞雅",
+    "nameEn": "Lunaris",
+    "icon": "../images/pals/Mutant.webp"
+  },
+  {
+    "id": "FengyunDeeper",
+    "paldeckNo": "83",
+    "nameZh": "云海鹿",
+    "nameEn": "Fenglope",
+    "icon": "../images/pals/FengyunDeeper.webp"
+  },
+  {
+    "id": "FengyunDeeper_Electric",
+    "paldeckNo": "83B",
+    "nameZh": "雷隐鹿",
+    "nameEn": "Fenglope Lux",
+    "icon": "../images/pals/FengyunDeeper_Electric.webp"
+  },
+  {
+    "id": "FlowerDinosaur",
+    "paldeckNo": "84",
+    "nameZh": "花冠龙",
+    "nameEn": "Dinossom",
+    "icon": "../images/pals/FlowerDinosaur.webp"
+  },
+  {
+    "id": "FlowerDinosaur_Electric",
+    "paldeckNo": "84B",
+    "nameZh": "雷冠龙",
+    "nameEn": "Dinossom Lux",
+    "icon": "../images/pals/FlowerDinosaur_Electric.webp"
+  },
+  {
+    "id": "Ronin",
+    "paldeckNo": "85",
+    "nameZh": "浪刃武士",
+    "nameEn": "Bushi",
+    "icon": "../images/pals/Ronin.webp"
+  },
+  {
+    "id": "Ronin_Dark",
+    "paldeckNo": "85B",
+    "nameZh": "鬼刃武士",
+    "nameEn": "Bushi Noct",
+    "icon": "../images/pals/Ronin_Dark.webp"
+  },
+  {
+    "id": "IceCrocodile",
+    "paldeckNo": "86",
+    "nameZh": "肚肚鳄",
+    "nameEn": "Munchill",
+    "icon": "../images/pals/IceCrocodile.webp"
+  },
+  {
+    "id": "GrassMammoth",
+    "paldeckNo": "87",
+    "nameZh": "森猛犸",
+    "nameEn": "Mammorest",
+    "icon": "../images/pals/GrassMammoth.webp"
+  },
+  {
+    "id": "GrassMammoth_Ice",
+    "paldeckNo": "87B",
+    "nameZh": "雪猛犸",
+    "nameEn": "Mammorest Cryst",
+    "icon": "../images/pals/GrassMammoth_Ice.webp"
+  },
+  {
+    "id": "StuffedShark",
+    "paldeckNo": "88",
+    "nameZh": "布偶鲨",
+    "nameEn": "Finsider",
+    "icon": "../images/pals/StuffedShark.webp"
+  },
+  {
+    "id": "StuffedShark_Fire",
+    "paldeckNo": "88B",
+    "nameZh": "粉粉布偶鲨",
+    "nameEn": "Finsider Ignis",
+    "icon": "../images/pals/StuffedShark_Fire.webp"
+  },
+  {
+    "id": "FlowerDoll",
+    "paldeckNo": "89",
+    "nameZh": "花丽娜",
+    "nameEn": "Petallia",
+    "icon": "../images/pals/FlowerDoll.webp"
+  },
+  {
+    "id": "FlowerDoll_Fire",
+    "paldeckNo": "89B",
+    "nameZh": "樱丽娜",
+    "nameEn": "Petallia Ignis",
+    "icon": "../images/pals/FlowerDoll_Fire.png"
+  },
+  {
+    "id": "PandaGirl",
+    "paldeckNo": "90",
+    "nameZh": "莉芳",
+    "nameEn": "Leafan",
+    "icon": "../images/pals/PandaGirl.png"
+  },
+  {
+    "id": "Baphomet",
+    "paldeckNo": "91",
+    "nameZh": "炎魔羊",
+    "nameEn": "Incineram",
+    "icon": "../images/pals/Baphomet.webp"
+  },
+  {
+    "id": "Baphomet_Dark",
+    "paldeckNo": "91B",
+    "nameZh": "暗魔羊",
+    "nameEn": "Incineram Noct",
+    "icon": "../images/pals/Baphomet_Dark.webp"
+  },
+  {
+    "id": "RaijinDaughter",
+    "paldeckNo": "92",
+    "nameZh": "雷鸣童子",
+    "nameEn": "Dazzi",
+    "icon": "../images/pals/RaijinDaughter.webp"
+  },
+  {
+    "id": "RaijinDaughter_Water",
+    "paldeckNo": "92B",
+    "nameZh": "天阴童子",
+    "nameEn": "Dazzi Noct",
+    "icon": "../images/pals/RaijinDaughter_Water.webp"
+  },
+  {
+    "id": "FireKirin",
+    "paldeckNo": "93",
+    "nameZh": "火麒麟",
+    "nameEn": "Pyrin",
+    "icon": "../images/pals/FireKirin.webp"
+  },
+  {
+    "id": "FireKirin_Dark",
+    "paldeckNo": "93B",
+    "nameZh": "邪麒麟",
+    "nameEn": "Pyrin Noct",
+    "icon": "../images/pals/FireKirin_Dark.webp"
+  },
+  {
+    "id": "LazyDragon",
+    "paldeckNo": "94",
+    "nameZh": "佩克龙",
+    "nameEn": "Relaxaurus",
+    "icon": "../images/pals/LazyDragon.webp"
+  },
+  {
+    "id": "LazyDragon_Electric",
+    "paldeckNo": "94B",
+    "nameZh": "派克龙",
+    "nameEn": "Relaxaurus Lux",
+    "icon": "../images/pals/LazyDragon_Electric.webp"
+  },
+  {
+    "id": "IceFox",
+    "paldeckNo": "95",
+    "nameZh": "吹雪狐",
+    "nameEn": "Foxcicle",
+    "icon": "../images/pals/IceFox.webp"
+  },
+  {
+    "id": "ThunderBird",
+    "paldeckNo": "96",
+    "nameZh": "迅雷鸟",
+    "nameEn": "Beakon",
+    "icon": "../images/pals/ThunderBird.webp"
+  },
+  {
+    "id": "ThunderBird_Ice",
+    "paldeckNo": "96B",
+    "nameZh": "疾霜鸟",
+    "nameEn": "Beakon Cryst",
+    "icon": "../images/pals/ThunderBird_Ice.png"
+  },
+  {
+    "id": "GhostAnglerfish",
+    "paldeckNo": "97",
+    "nameZh": "冥灯鱼",
+    "nameEn": "Ghangler",
+    "icon": "../images/pals/GhostAnglerfish.webp"
+  },
+  {
+    "id": "GhostAnglerfish_Fire",
+    "paldeckNo": "97B",
+    "nameZh": "炙灯鱼",
+    "nameEn": "Ghangler Ignis",
+    "icon": "../images/pals/GhostAnglerfish_Fire.webp"
+  },
+  {
+    "id": "ThunderDog",
+    "paldeckNo": "98",
+    "nameZh": "霹雳犬",
+    "nameEn": "Rayhound",
+    "icon": "../images/pals/ThunderDog.webp"
+  },
+  {
+    "id": "ThunderDog_Ice",
+    "paldeckNo": "98B",
+    "nameZh": "凛光犬",
+    "nameEn": "Rayhound Cryst",
+    "icon": "../images/pals/ThunderDog_Ice.png"
+  },
+  {
+    "id": "DarkScorpion",
+    "paldeckNo": "99",
+    "nameZh": "冥铠蝎",
+    "nameEn": "Menasting",
+    "icon": "../images/pals/DarkScorpion.webp"
+  },
+  {
+    "id": "DarkScorpion_Ground",
+    "paldeckNo": "99B",
+    "nameZh": "金铠蝎",
+    "nameEn": "Menasting Terra",
+    "icon": "../images/pals/DarkScorpion_Ground.webp"
+  },
+  {
+    "id": "CactusDoll",
+    "paldeckNo": "100",
+    "nameZh": "球抱苞",
+    "nameEn": "Needoll",
+    "icon": "../images/pals/CactusDoll.png"
+  },
+  {
+    "id": "CactusDoll_Dark",
+    "paldeckNo": "100B",
+    "nameZh": "妖抱苞",
+    "nameEn": "Needoll Noct",
+    "icon": "../images/pals/CactusDoll_Dark.png"
+  },
+  {
+    "id": "IceDeer",
+    "paldeckNo": "101",
+    "nameZh": "严冬鹿",
+    "nameEn": "Reindrix",
+    "icon": "../images/pals/IceDeer.webp"
+  },
+  {
+    "id": "GrassPanda",
+    "paldeckNo": "102",
+    "nameZh": "叶胖达",
+    "nameEn": "Mossanda",
+    "icon": "../images/pals/GrassPanda.webp"
+  },
+  {
+    "id": "GrassPanda_Electric",
+    "paldeckNo": "102B",
+    "nameZh": "雷胖达",
+    "nameEn": "Mossanda Lux",
+    "icon": "../images/pals/GrassPanda_Electric.webp"
+  },
+  {
+    "id": "WeaselDragon",
+    "paldeckNo": "103",
+    "nameZh": "疾旋鼬",
+    "nameEn": "Chillet",
+    "icon": "../images/pals/WeaselDragon.webp"
+  },
+  {
+    "id": "WeaselDragon_Fire",
+    "paldeckNo": "103B",
+    "nameZh": "桃旋鼬",
+    "nameEn": "Chillet Ignis",
+    "icon": "../images/pals/WeaselDragon_Fire.webp"
+  },
+  {
+    "id": "RedArmorBird",
+    "paldeckNo": "104",
+    "nameZh": "燧火鸟",
+    "nameEn": "Ragnahawk",
+    "icon": "../images/pals/RedArmorBird.webp"
+  },
+  {
+    "id": "VolcanoDragon",
+    "paldeckNo": "105",
+    "nameZh": "流焰龙",
+    "nameEn": "Moldron",
+    "icon": "../images/pals/VolcanoDragon.png"
+  },
+  {
+    "id": "VolcanoDragon_Ice",
+    "paldeckNo": "105B",
+    "nameZh": "川霜龙",
+    "nameEn": "Moldron Cryst",
+    "icon": "../images/pals/VolcanoDragon_Ice.png"
+  },
+  {
+    "id": "TropicalOstrich",
+    "paldeckNo": "106",
+    "nameZh": "咕咕桑葩",
+    "nameEn": "Palumba",
+    "icon": "../images/pals/TropicalOstrich.webp"
+  },
+  {
+    "id": "DrillGame",
+    "paldeckNo": "107",
+    "nameZh": "碎岩龟",
+    "nameEn": "Digtoise",
+    "icon": "../images/pals/DrillGame.webp"
+  },
+  {
+    "id": "SakuraSaurus",
+    "paldeckNo": "108",
+    "nameZh": "连理龙",
+    "nameEn": "Broncherry",
+    "icon": "../images/pals/SakuraSaurus.webp"
+  },
+  {
+    "id": "SakuraSaurus_Water",
+    "paldeckNo": "108B",
+    "nameZh": "海誓龙",
+    "nameEn": "Broncherry Aqua",
+    "icon": "../images/pals/SakuraSaurus_Water.webp"
+  },
+  {
+    "id": "LazyCatfish",
+    "paldeckNo": "109",
+    "nameZh": "趴趴鲶",
+    "nameEn": "Dumud",
+    "icon": "../images/pals/LazyCatfish.webp"
+  },
+  {
+    "id": "LazyCatfish_Gold",
+    "paldeckNo": "109B",
+    "nameZh": "梆梆鲶",
+    "nameEn": "Dumud Gild",
+    "icon": "../images/pals/LazyCatfish_Gold.webp"
+  },
+  {
+    "id": "Plesiosaur",
+    "paldeckNo": "110",
+    "nameZh": "梁叶龙",
+    "nameEn": "Braloha",
+    "icon": "../images/pals/Plesiosaur.webp"
+  },
+  {
+    "id": "AmaterasuWolf",
+    "paldeckNo": "111",
+    "nameZh": "苍焰狼",
+    "nameEn": "Kitsun",
+    "icon": "../images/pals/AmaterasuWolf.webp"
+  },
+  {
+    "id": "AmaterasuWolf_Dark",
+    "paldeckNo": "111B",
+    "nameZh": "幽焰狼",
+    "nameEn": "Kitsun Noct",
+    "icon": "../images/pals/AmaterasuWolf_Dark.webp"
+  },
+  {
+    "id": "Manticore",
+    "paldeckNo": "112",
+    "nameZh": "狱焰王",
+    "nameEn": "Blazehowl",
+    "icon": "../images/pals/Manticore.webp"
+  },
+  {
+    "id": "Manticore_Dark",
+    "paldeckNo": "112B",
+    "nameZh": "狱阎王",
+    "nameEn": "Blazehowl Noct",
+    "icon": "../images/pals/Manticore_Dark.webp"
+  },
+  {
+    "id": "HerculesBeetle",
+    "paldeckNo": "113",
+    "nameZh": "铠格力斯",
+    "nameEn": "Warsect",
+    "icon": "../images/pals/HerculesBeetle.webp"
+  },
+  {
+    "id": "HerculesBeetle_Ground",
+    "paldeckNo": "113B",
+    "nameZh": "格鲁力斯",
+    "nameEn": "Warsect Terra",
+    "icon": "../images/pals/HerculesBeetle_Ground.webp"
+  },
+  {
+    "id": "SnowPeafowl",
+    "paldeckNo": "114",
+    "nameZh": "白真雪雀",
+    "nameEn": "Frostplume",
+    "icon": "../images/pals/SnowPeafowl.webp"
+  },
+  {
+    "id": "DarkFlameFox",
+    "paldeckNo": "115",
+    "nameZh": "紫狐娇",
+    "nameEn": "Majex",
+    "icon": "../images/pals/DarkFlameFox.png"
+  },
+  {
+    "id": "WhiteMoth",
+    "paldeckNo": "116",
+    "nameZh": "绸笠蛾",
+    "nameEn": "Sibelyx",
+    "icon": "../images/pals/WhiteMoth.webp"
+  },
+  {
+    "id": "WhiteMoth_Neutral",
+    "paldeckNo": "116B",
+    "nameZh": "绢笠蛾",
+    "nameEn": "Sibelyx Primo",
+    "icon": "../images/pals/WhiteMoth_Neutral.png"
+  },
+  {
+    "id": "GhostBeast",
+    "paldeckNo": "117",
+    "nameZh": "噬魂兽",
+    "nameEn": "Maraith",
+    "icon": "../images/pals/GhostBeast.webp"
+  },
+  {
+    "id": "MushroomDragon",
+    "paldeckNo": "118",
+    "nameZh": "菇咚",
+    "nameEn": "Shroomer",
+    "icon": "../images/pals/MushroomDragon.webp"
+  },
+  {
+    "id": "MushroomDragon_Dark",
+    "paldeckNo": "118B",
+    "nameZh": "菇波",
+    "nameEn": "Shroomer Noct",
+    "icon": "../images/pals/MushroomDragon_Dark.png"
+  },
+  {
+    "id": "IceWitch",
+    "paldeckNo": "119",
+    "nameZh": "冰姬灵",
+    "nameEn": "Icelyn",
+    "icon": "../images/pals/IceWitch.webp"
+  },
+  {
+    "id": "MummyPal",
+    "paldeckNo": "120",
+    "nameZh": "缚乃伊",
+    "nameEn": "Gildra",
+    "icon": "../images/pals/MummyPal.png"
+  },
+  {
+    "id": "Umihebi",
+    "paldeckNo": "121",
+    "nameZh": "覆海龙",
+    "nameEn": "Jormuntide",
+    "icon": "../images/pals/Umihebi.webp"
+  },
+  {
+    "id": "Umihebi_Fire",
+    "paldeckNo": "121B",
+    "nameZh": "腾炎龙",
+    "nameEn": "Jormuntide Ignis",
+    "icon": "../images/pals/Umihebi_Fire.webp"
+  },
+  {
+    "id": "Suzaku",
+    "paldeckNo": "122",
+    "nameZh": "朱雀",
+    "nameEn": "Suzaku",
+    "icon": "../images/pals/Suzaku.webp"
+  },
+  {
+    "id": "Suzaku_Water",
+    "paldeckNo": "122B",
+    "nameZh": "清雀",
+    "nameEn": "Suzaku Aqua",
+    "icon": "../images/pals/Suzaku_Water.png"
+  },
+  {
+    "id": "FeatherOstrich",
+    "paldeckNo": "123",
+    "nameZh": "战冠雀",
+    "nameEn": "Dazemu",
+    "icon": "../images/pals/FeatherOstrich.webp"
+  },
+  {
+    "id": "SkyDragon",
+    "paldeckNo": "124",
+    "nameZh": "天羽龙",
+    "nameEn": "Quivern",
+    "icon": "../images/pals/SkyDragon.webp"
+  },
+  {
+    "id": "SkyDragon_Grass",
+    "paldeckNo": "124B",
+    "nameZh": "翠羽龙",
+    "nameEn": "Quivern Botan",
+    "icon": "../images/pals/SkyDragon_Grass.webp"
+  },
+  {
+    "id": "LeafPrincess",
+    "paldeckNo": "125",
+    "nameZh": "春彩娘",
+    "nameEn": "Lullu",
+    "icon": "../images/pals/LeafPrincess.webp"
+  },
+  {
+    "id": "SmallArmadillo",
+    "paldeckNo": "126",
+    "nameZh": "球犰",
+    "nameEn": "Kikit",
+    "icon": "../images/pals/SmallArmadillo.webp"
+  },
+  {
+    "id": "GuardianDog",
+    "paldeckNo": "127",
+    "nameZh": "八云犬",
+    "nameEn": "Yakumo",
+    "icon": "../images/pals/GuardianDog.png"
+  },
+  {
+    "id": "SwordCutlassfish",
+    "paldeckNo": "128",
+    "nameZh": "鞘刀鱼",
+    "nameEn": "Skutlass",
+    "icon": "../images/pals/SwordCutlassfish.png"
+  },
+  {
+    "id": "SwordCutlassfish_Fire",
+    "paldeckNo": "128B",
+    "nameZh": "炼刃鱼",
+    "nameEn": "Skutlass Ignis",
+    "icon": "../images/pals/SwordCutlassfish_Fire.png"
+  },
+  {
+    "id": "VolcanicMonster",
+    "paldeckNo": "129",
+    "nameZh": "熔岩兽",
+    "nameEn": "Reptyro",
+    "icon": "../images/pals/VolcanicMonster.webp"
+  },
+  {
+    "id": "VolcanicMonster_Ice",
+    "paldeckNo": "129B",
+    "nameZh": "寒霜兽",
+    "nameEn": "Reptyro Cryst",
+    "icon": "../images/pals/VolcanicMonster_Ice.webp"
+  },
+  {
+    "id": "NightBlueHorse",
+    "paldeckNo": "130",
+    "nameZh": "夜冥驹",
+    "nameEn": "Starryon",
+    "icon": "../images/pals/NightBlueHorse.webp"
+  },
+  {
+    "id": "NightBlueHorse_Neutral",
+    "paldeckNo": "130B",
+    "nameZh": "日耀驹",
+    "nameEn": "Starryon Primo",
+    "icon": "../images/pals/NightBlueHorse_Neutral.png"
+  },
+  {
+    "id": "RockBeast",
+    "paldeckNo": "131",
+    "nameZh": "磐峰兽",
+    "nameEn": "Pierdon",
+    "icon": "../images/pals/RockBeast.png"
+  },
+  {
+    "id": "RockBeast_Ice",
+    "paldeckNo": "131B",
+    "nameZh": "寒峰兽",
+    "nameEn": "Pierdon Cryst",
+    "icon": "../images/pals/RockBeast_Ice.png"
+  },
+  {
+    "id": "WhiteTiger",
+    "paldeckNo": "132",
+    "nameZh": "冰棘兽",
+    "nameEn": "Cryolinx",
+    "icon": "../images/pals/WhiteTiger.webp"
+  },
+  {
+    "id": "WhiteTiger_Ground",
+    "paldeckNo": "132B",
+    "nameZh": "金棘兽",
+    "nameEn": "Cryolinx Terra",
+    "icon": "../images/pals/WhiteTiger_Ground.webp"
+  },
+  {
+    "id": "SmallYeti",
+    "paldeckNo": "133",
+    "nameZh": "雪墩墩",
+    "nameEn": "Snugloo",
+    "icon": "../images/pals/SmallYeti.png"
+  },
+  {
+    "id": "Yeti",
+    "paldeckNo": "134",
+    "nameZh": "白绒雪怪",
+    "nameEn": "Wumpo",
+    "icon": "../images/pals/Yeti.webp"
+  },
+  {
+    "id": "Yeti_Grass",
+    "paldeckNo": "134B",
+    "nameZh": "绿苔绒怪",
+    "nameEn": "Wumpo Botan",
+    "icon": "../images/pals/Yeti_Grass.webp"
+  },
+  {
+    "id": "CandleGhost",
+    "paldeckNo": "135",
+    "nameZh": "恐炬灵",
+    "nameEn": "Sootseer",
+    "icon": "../images/pals/CandleGhost.webp"
+  },
+  {
+    "id": "VenusFlytrap",
+    "paldeckNo": "136",
+    "nameZh": "颚莉丝",
+    "nameEn": "Carnibora",
+    "icon": "../images/pals/VenusFlytrap.png"
+  },
+  {
+    "id": "KingBahamut",
+    "paldeckNo": "137",
+    "nameZh": "焰煌",
+    "nameEn": "Blazamut",
+    "icon": "../images/pals/KingBahamut.webp"
+  },
+  {
+    "id": "KingBahamut_Dragon",
+    "paldeckNo": "137B",
+    "nameZh": "殁殃",
+    "nameEn": "Blazamut Ryu",
+    "icon": "../images/pals/KingBahamut_Dragon.webp"
+  },
+  {
+    "id": "GrassGolem",
+    "paldeckNo": "138",
+    "nameZh": "双心岩傀",
+    "nameEn": "Dualith",
+    "icon": "../images/pals/GrassGolem.png"
+  },
+  {
+    "id": "GrassGolem_Dark",
+    "paldeckNo": "138B",
+    "nameZh": "咒心岩傀",
+    "nameEn": "Dualith Noct",
+    "icon": "../images/pals/GrassGolem_Dark.png"
+  },
+  {
+    "id": "Anubis",
+    "paldeckNo": "139",
+    "nameZh": "阿努比斯",
+    "nameEn": "Anubis",
+    "icon": "../images/pals/Anubis.webp"
+  },
+  {
+    "id": "Sekhmet",
+    "paldeckNo": "140",
+    "nameZh": "塞赫麦特",
+    "nameEn": "Sekhmet",
+    "icon": "../images/pals/Sekhmet.png"
+  },
+  {
+    "id": "ScorpionMan",
+    "paldeckNo": "141",
+    "nameZh": "蛊刺妖",
+    "nameEn": "Prixter",
+    "icon": "../images/pals/ScorpionMan.webp"
+  },
+  {
+    "id": "ScorpionMan_Electric",
+    "paldeckNo": "141B",
+    "nameZh": "电针妖",
+    "nameEn": "Prixter Lux",
+    "icon": "../images/pals/ScorpionMan_Electric.png"
+  },
+  {
+    "id": "CubeTurtle",
+    "paldeckNo": "142",
+    "nameZh": "重岩龟",
+    "nameEn": "Tetroise",
+    "icon": "../images/pals/CubeTurtle.png"
+  },
+  {
+    "id": "CubeTurtle_Neutral",
+    "paldeckNo": "142B",
+    "nameZh": "净岩龟",
+    "nameEn": "Tetroise Primo",
+    "icon": "../images/pals/CubeTurtle_Neutral.png"
+  },
+  {
+    "id": "BadCatgirl",
+    "paldeckNo": "143",
+    "nameZh": "妮瞅莎",
+    "nameEn": "Nyafia",
+    "icon": "../images/pals/BadCatgirl.webp"
+  },
+  {
+    "id": "MimicDog",
+    "paldeckNo": "144",
+    "nameZh": "旺财",
+    "nameEn": "Mimog",
+    "icon": "../images/pals/MimicDog.webp"
+  },
+  {
+    "id": "DarkAlien",
+    "paldeckNo": "145",
+    "nameZh": "杰诺贝达",
+    "nameEn": "Xenovader",
+    "icon": "../images/pals/DarkAlien.webp"
+  },
+  {
+    "id": "WhiteAlienDragon",
+    "paldeckNo": "146",
+    "nameZh": "杰诺路达",
+    "nameEn": "Xenogard",
+    "icon": "../images/pals/WhiteAlienDragon.webp"
+  },
+  {
+    "id": "BlueberryFairy",
+    "paldeckNo": "147",
+    "nameZh": "梅莉姆",
+    "nameEn": "Prunelia",
+    "icon": "../images/pals/BlueberryFairy.webp"
+  },
+  {
+    "id": "GhostRabbit",
+    "paldeckNo": "148",
+    "nameZh": "魅爱莉",
+    "nameEn": "Nitemary",
+    "icon": "../images/pals/GhostRabbit.webp"
+  },
+  {
+    "id": "GhostRabbit_Grass",
+    "paldeckNo": "148B",
+    "nameZh": "碧艾莉",
+    "nameEn": "Nitemary Botan",
+    "icon": "../images/pals/GhostRabbit_Grass.png"
+  },
+  {
+    "id": "BlackPuppy",
+    "paldeckNo": "149",
+    "nameZh": "墨丸",
+    "nameEn": "Smokie",
+    "icon": "../images/pals/BlackPuppy.webp"
+  },
+  {
+    "id": "BlackPuppy_Ice",
+    "paldeckNo": "149B",
+    "nameZh": "冬丸",
+    "nameEn": "Smokie Cryst",
+    "icon": "../images/pals/BlackPuppy_Ice.png"
+  },
+  {
+    "id": "MysteryMask",
+    "paldeckNo": "150",
+    "nameZh": "面惧",
+    "nameEn": "Omascul",
+    "icon": "../images/pals/MysteryMask.webp"
+  },
+  {
+    "id": "IceNarwhal",
+    "paldeckNo": "151",
+    "nameZh": "凉晶鲸",
+    "nameEn": "Whalaska",
+    "icon": "../images/pals/IceNarwhal.webp"
+  },
+  {
+    "id": "IceNarwhal_Fire",
+    "paldeckNo": "151B",
+    "nameZh": "桃晶鲸",
+    "nameEn": "Whalaska Ignis",
+    "icon": "../images/pals/IceNarwhal_Fire.webp"
+  },
+  {
+    "id": "GrassRabbitMan",
+    "paldeckNo": "152",
+    "nameZh": "踏春兔",
+    "nameEn": "Verdash",
+    "icon": "../images/pals/GrassRabbitMan.webp"
+  },
+  {
+    "id": "GrimGirl",
+    "paldeckNo": "153",
+    "nameZh": "幽恋娜",
+    "nameEn": "Splatterina",
+    "icon": "../images/pals/GrimGirl.webp"
+  },
+  {
+    "id": "GoldenHorse",
+    "paldeckNo": "154",
+    "nameZh": "金驰兽",
+    "nameEn": "Gildane",
+    "icon": "../images/pals/GoldenHorse.webp"
+  },
+  {
+    "id": "SifuDog",
+    "paldeckNo": "155",
+    "nameZh": "汪宗师",
+    "nameEn": "Dogen",
+    "icon": "../images/pals/SifuDog.webp"
+  },
+  {
+    "id": "SumoDog",
+    "paldeckNo": "156",
+    "nameZh": "力士獒",
+    "nameEn": "Bulldosu",
+    "icon": "../images/pals/SumoDog.png"
+  },
+  {
+    "id": "WhiteDeer",
+    "paldeckNo": "157",
+    "nameZh": "净世鹿",
+    "nameEn": "Celesdir",
+    "icon": "../images/pals/WhiteDeer.webp"
+  },
+  {
+    "id": "WhiteDeer_Dark",
+    "paldeckNo": "157B",
+    "nameZh": "织夜鹿",
+    "nameEn": "Celesdir Noct",
+    "icon": "../images/pals/WhiteDeer_Dark.png"
+  },
+  {
+    "id": "BlackMetalDragon",
+    "paldeckNo": "158",
+    "nameZh": "魔渊龙",
+    "nameEn": "Astegon",
+    "icon": "../images/pals/BlackMetalDragon.webp"
+  },
+  {
+    "id": "WingGolem",
+    "paldeckNo": "159",
+    "nameZh": "泰锋",
+    "nameEn": "Knocklem",
+    "icon": "../images/pals/WingGolem.webp"
+  },
+  {
+    "id": "WingGolem_Fire",
+    "paldeckNo": "159B",
+    "nameZh": "丹烽",
+    "nameEn": "Knocklem Ignis",
+    "icon": "../images/pals/WingGolem_Fire.png"
+  },
+  {
+    "id": "WhiteShieldDragon",
+    "paldeckNo": "160",
+    "nameZh": "艾基鲁迦",
+    "nameEn": "Silvegis",
+    "icon": "../images/pals/WhiteShieldDragon.webp"
+  },
+  {
+    "id": "BlueThunderHorse",
+    "paldeckNo": "161",
+    "nameZh": "驭雷马",
+    "nameEn": "Azurmane",
+    "icon": "../images/pals/BlueThunderHorse.webp"
+  },
+  {
+    "id": "LongCat",
+    "paldeckNo": "162",
+    "nameZh": "喵璐璐",
+    "nameEn": "Valentail",
+    "icon": "../images/pals/LongCat.png"
+  },
+  {
+    "id": "ElecSnail",
+    "paldeckNo": "163",
+    "nameZh": "电涡蜗",
+    "nameEn": "Snock",
+    "icon": "../images/pals/ElecSnail.png"
+  },
+  {
+    "id": "ElecSnail_Ground",
+    "paldeckNo": "163B",
+    "nameZh": "金涡蜗",
+    "nameEn": "Snock Lux",
+    "icon": "../images/pals/ElecSnail_Ground.png"
+  },
+  {
+    "id": "DandelionGirl",
+    "paldeckNo": "164",
+    "nameZh": "蒲蒲飞芽",
+    "nameEn": "Souffline",
+    "icon": "../images/pals/DandelionGirl.png"
+  },
+  {
+    "id": "BrownRabbit",
+    "paldeckNo": "165",
+    "nameZh": "詹兔曼",
+    "nameEn": "Lapiron",
+    "icon": "../images/pals/BrownRabbit.png"
+  },
+  {
+    "id": "HoodGhost",
+    "paldeckNo": "166",
+    "nameZh": "兜兜灵",
+    "nameEn": "Hoodle",
+    "icon": "../images/pals/HoodGhost.png"
+  },
+  {
+    "id": "ElecLizard",
+    "paldeckNo": "167",
+    "nameZh": "电懒懒",
+    "nameEn": "Slowatt",
+    "icon": "../images/pals/ElecLizard.png"
+  },
+  {
+    "id": "OniGhostGirl",
+    "paldeckNo": "168",
+    "nameZh": "吓丝妮",
+    "nameEn": "Bakemi",
+    "icon": "../images/pals/OniGhostGirl.png"
+  },
+  {
+    "id": "KingSunfish",
+    "paldeckNo": "169",
+    "nameZh": "曼波王",
+    "nameEn": "Solmora",
+    "icon": "../images/pals/KingSunfish.png"
+  },
+  {
+    "id": "KingSunfish_Thunder",
+    "paldeckNo": "169B",
+    "nameZh": "曼波皇",
+    "nameEn": "Solmora Lux",
+    "icon": "../images/pals/KingSunfish_Thunder.png"
+  },
+  {
+    "id": "SleeveRabbit",
+    "paldeckNo": "170",
+    "nameZh": "兔绣袖",
+    "nameEn": "Lapure",
+    "icon": "../images/pals/SleeveRabbit.png"
+  },
+  {
+    "id": "GhostDragon",
+    "paldeckNo": "171",
+    "nameZh": "灵曦龙",
+    "nameEn": "Eidrolon",
+    "icon": "../images/pals/GhostDragon.png"
+  },
+  {
+    "id": "GhostDragon_Fire",
+    "paldeckNo": "171B",
+    "nameZh": "狱熙龙",
+    "nameEn": "Eidrolon Ignis",
+    "icon": "../images/pals/GhostDragon_Fire.png"
+  },
+  {
+    "id": "ThunderFluffyBird",
+    "paldeckNo": "172",
+    "nameZh": "雷云鹫",
+    "nameEn": "Dynamoff",
+    "icon": "../images/pals/ThunderFluffyBird.png"
+  },
+  {
+    "id": "RedFlowerBird",
+    "paldeckNo": "173",
+    "nameZh": "大红呱",
+    "nameEn": "Tropicaw",
+    "icon": "../images/pals/RedFlowerBird.png"
+  },
+  {
+    "id": "FoxExorcist",
+    "paldeckNo": "174",
+    "nameZh": "昭炎狐",
+    "nameEn": "Flaracle",
+    "icon": "../images/pals/FoxExorcist.png"
+  },
+  {
+    "id": "LotusDragon",
+    "paldeckNo": "175",
+    "nameZh": "沁莲龙",
+    "nameEn": "Ophydia",
+    "icon": "../images/pals/LotusDragon.png"
+  },
+  {
+    "id": "ClownRabbit",
+    "paldeckNo": "176",
+    "nameZh": "拉比耶尔",
+    "nameEn": "Dupin",
+    "icon": "../images/pals/ClownRabbit.png"
+  },
+  {
+    "id": "ThiefBird",
+    "paldeckNo": "177",
+    "nameZh": "盗影鸦",
+    "nameEn": "Roujay",
+    "icon": "../images/pals/ThiefBird.png"
+  },
+  {
+    "id": "SnakeGirl",
+    "paldeckNo": "178",
+    "nameZh": "梅杜娜",
+    "nameEn": "Venusa",
+    "icon": "../images/pals/SnakeGirl.png"
+  },
+  {
+    "id": "MushroomLady",
+    "paldeckNo": "179",
+    "nameZh": "红菇娘",
+    "nameEn": "Mycora",
+    "icon": "../images/pals/MushroomLady.png"
+  },
+  {
+    "id": "LanternButler",
+    "paldeckNo": "180",
+    "nameZh": "妖焰灯",
+    "nameEn": "Loomen",
+    "icon": "../images/pals/LanternButler.png"
+  },
+  {
+    "id": "MoonChild",
+    "paldeckNo": "181",
+    "nameZh": "缀夜星",
+    "nameEn": "Wistella",
+    "icon": "../images/pals/MoonChild.png"
+  },
+  {
+    "id": "MonochromeQueen",
+    "paldeckNo": "182",
+    "nameZh": "墨罗娜",
+    "nameEn": "Solenne",
+    "icon": "../images/pals/MonochromeQueen.png"
+  },
+  {
+    "id": "KabukiMan",
+    "paldeckNo": "183",
+    "nameZh": "燎火舞伶",
+    "nameEn": "Renjishi",
+    "icon": "../images/pals/KabukiMan.png"
+  },
+  {
+    "id": "DomeArmorDragon",
+    "paldeckNo": "184",
+    "nameZh": "磐甲龙",
+    "nameEn": "Aegidron",
+    "icon": "../images/pals/DomeArmorDragon.png"
+  },
+  {
+    "id": "ElecPanda",
+    "paldeckNo": "185",
+    "nameZh": "暴电熊",
+    "nameEn": "Grizzbolt",
+    "icon": "../images/pals/ElecPanda.png"
+  },
+  {
+    "id": "LilyQueen",
+    "paldeckNo": "186",
+    "nameZh": "百合女王",
+    "nameEn": "Lyleen",
+    "icon": "../images/pals/LilyQueen.webp"
+  },
+  {
+    "id": "LilyQueen_Dark",
+    "paldeckNo": "186B",
+    "nameZh": "黑月女王",
+    "nameEn": "Lyleen Noct",
+    "icon": "../images/pals/LilyQueen_Dark.webp"
+  },
+  {
+    "id": "ThunderDragonMan",
+    "paldeckNo": "187",
+    "nameZh": "波鲁杰克斯",
+    "nameEn": "Orserk",
+    "icon": "../images/pals/ThunderDragonMan.webp"
+  },
+  {
+    "id": "Horus",
+    "paldeckNo": "188",
+    "nameZh": "荷鲁斯",
+    "nameEn": "Faleris",
+    "icon": "../images/pals/Horus.png"
+  },
+  {
+    "id": "Horus_Water",
+    "paldeckNo": "188B",
+    "nameZh": "伊西斯",
+    "nameEn": "Faleris Aqua",
+    "icon": "../images/pals/Horus_Water.webp"
+  },
+  {
+    "id": "BlackGriffon",
+    "paldeckNo": "189",
+    "nameZh": "异构格里芬",
+    "nameEn": "Shadowbeak",
+    "icon": "../images/pals/BlackGriffon.png"
+  },
+  {
+    "id": "MoonQueen",
+    "paldeckNo": "190",
+    "nameZh": "辉月伊",
+    "nameEn": "Selyne",
+    "icon": "../images/pals/MoonQueen.webp"
+  },
+  {
+    "id": "SnowTigerBeastman",
+    "paldeckNo": "191",
+    "nameZh": "霜牙王",
+    "nameEn": "Bastigor",
+    "icon": "../images/pals/SnowTigerBeastman.png"
+  },
+  {
+    "id": "BlueSkyDragon",
+    "paldeckNo": "192",
+    "nameZh": "霄龙",
+    "nameEn": "Shaolong",
+    "icon": "../images/pals/BlueSkyDragon.png"
+  },
+  {
+    "id": "Mothman",
+    "paldeckNo": "193",
+    "nameZh": "暮尘蛾",
+    "nameEn": "Silvance",
+    "icon": "../images/pals/Mothman.png"
+  },
+  {
+    "id": "FlowerPrince",
+    "paldeckNo": "194",
+    "nameZh": "夜蔓爵",
+    "nameEn": "Dandilord",
+    "icon": "../images/pals/FlowerPrince.png"
+  },
+  {
+    "id": "NightLady",
+    "paldeckNo": "195",
+    "nameZh": "贝菈诺娃",
+    "nameEn": "Bellanoir",
+    "icon": "../images/pals/NightLady.webp"
+  },
+  {
+    "id": "NightLady_Dark",
+    "paldeckNo": "195B",
+    "nameZh": "贝菈露洁",
+    "nameEn": "Bellanoir Libero",
+    "icon": "../images/pals/NightLady_Dark.webp"
+  },
+  {
+    "id": "DarkMechaDragon",
+    "paldeckNo": "196",
+    "nameZh": "杰诺多兰",
+    "nameEn": "Xenolord",
+    "icon": "../images/pals/DarkMechaDragon.webp"
+  },
+  {
+    "id": "LegendDeer",
+    "paldeckNo": "197",
+    "nameZh": "默世鹿",
+    "nameEn": "Hartalis",
+    "icon": "../images/pals/LegendDeer.png"
+  },
+  {
+    "id": "SaintCentaur",
+    "paldeckNo": "198",
+    "nameZh": "圣光骑士",
+    "nameEn": "Paladius",
+    "icon": "../images/pals/SaintCentaur.webp"
+  },
+  {
+    "id": "BlackCentaur",
+    "paldeckNo": "199",
+    "nameZh": "混沌骑士",
+    "nameEn": "Necromus",
+    "icon": "../images/pals/BlackCentaur.webp"
+  },
+  {
+    "id": "IceHorse",
+    "paldeckNo": "200",
+    "nameZh": "唤冬兽",
+    "nameEn": "Frostallion",
+    "icon": "../images/pals/IceHorse.webp"
+  },
+  {
+    "id": "IceHorse_Dark",
+    "paldeckNo": "200B",
+    "nameZh": "唤夜兽",
+    "nameEn": "Frostallion Noct",
+    "icon": "../images/pals/IceHorse_Dark.webp"
+  },
+  {
+    "id": "PoseidonOrca",
+    "paldeckNo": "201",
+    "nameZh": "海皇鲸",
+    "nameEn": "Neptilius",
+    "icon": "../images/pals/PoseidonOrca.webp"
+  },
+  {
+    "id": "JetDragon",
+    "paldeckNo": "202",
+    "nameZh": "空涡龙",
+    "nameEn": "Jetragon",
+    "icon": "../images/pals/JetDragon.webp"
+  },
+  {
+    "id": "KingWhale",
+    "paldeckNo": "203",
+    "nameZh": "奥沧鲸",
+    "nameEn": "Panthalus",
+    "icon": "../images/pals/KingWhale.png"
+  },
+  {
+    "id": "WorldTreeDragon",
+    "paldeckNo": "204",
+    "nameZh": "枯星龙",
+    "nameEn": "Astralym",
+    "icon": "../images/pals/WorldTreeDragon.png"
+  }
+]
