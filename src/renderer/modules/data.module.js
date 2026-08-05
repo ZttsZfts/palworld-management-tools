@@ -10,6 +10,8 @@ window.DataModule = class DataModule {
     this.state = state;
     this.modal = modal;
     this.navigation = navigation;
+    this.palMetadata = window.PalMetadata || {};
+    this.palMetadataLower = new Map(Object.entries(this.palMetadata).map(([id, value]) => [id.toLowerCase(), value]));
     this.syncing = false;
     this.timer = null;
   }
@@ -111,7 +113,8 @@ window.DataModule = class DataModule {
   }
 
   renderPlayers() {
-    let players = [...(this.state.get('snapshot')?.players || [])];
+    const allPlayers = [...(this.state.get('snapshot')?.players || [])];
+    let players = [...allPlayers];
     const query = $('#player-filter').val()?.trim().toLowerCase() || '';
     const status = $('#player-status-filter').val() || 'all';
     const sort = $('#player-sort').val() || 'online';
@@ -120,21 +123,40 @@ window.DataModule = class DataModule {
       return (!query || haystack.includes(query)) && (status === 'all' || (status === 'online') === Boolean(player.online));
     });
     players.sort(this.playerComparator(sort));
+    const online = allPlayers.filter((player) => player.online).length;
+    const guilded = allPlayers.filter((player) => player.guildId).length;
+    const averageLevel = allPlayers.length ? Math.round(allPlayers.reduce((sum, player) => sum + Number(player.level || 0), 0) / allPlayers.length) : 0;
+    $('#player-overview').html(this.overviewStats([
+      ['在线', online, 'live'], ['玩家总数', allPlayers.length], ['平均等级', averageLevel], ['已加入公会', guilded]
+    ]));
     $('#players-grid').html(players.length ? players.map((player) => this.playerCard(player)).join('') : '<div class="surface empty-state tall player-empty"><i class="bi bi-person-x"></i><strong>没有符合条件的玩家</strong><span>调整关键词或状态筛选后重试</span></div>');
   }
 
   renderGuilds() {
-    let guilds = [...(this.state.get('snapshot')?.guilds || [])];
+    const allGuilds = [...(this.state.get('snapshot')?.guilds || [])];
+    let guilds = [...allGuilds];
     const capabilities = this.state.get('snapshot')?.capabilities || {};
     const players = this.state.get('snapshot')?.players || [];
     const query = $('#guild-filter').val()?.trim().toLowerCase() || '';
     const sort = $('#guild-sort').val() || 'name';
     guilds = guilds.filter((guild) => `${guild.name} ${guild.memberIds.map((id) => players.find((p) => p.uid === id)?.name || '').join(' ')}`.toLowerCase().includes(query));
     guilds.sort(sort === 'level-desc' ? (a, b) => b.level - a.level : sort === 'members-desc' ? (a, b) => b.memberIds.length - a.memberIds.length : (a, b) => a.name.localeCompare(b.name, 'zh-CN'));
+    const memberIds = new Set(allGuilds.flatMap((guild) => guild.memberIds));
+    const totalMembers = memberIds.size;
+    const onlineMembers = players.filter((player) => player.online && memberIds.has(player.uid)).length;
+    const totalBases = allGuilds.reduce((sum, guild) => sum + (guild.palBoxes?.length || 0), 0);
+    $('#guild-overview').html(this.overviewStats([
+      ['公会总数', allGuilds.length], ['成员规模', totalMembers], ['在线成员', onlineMembers, 'live'], ['据点总数', totalBases]
+    ]));
     let emptyMessage = '<div class="surface empty-state tall" style="grid-column:1/-1"><i class="bi bi-shield"></i><strong>没有符合条件的公会缓存</strong></div>';
     if (!capabilities.supplementalConfigured) emptyMessage = '<div class="surface empty-state tall" style="grid-column:1/-1"><i class="bi bi-database-add"></i><strong>公会数据源未配置</strong><span>在服务器连接设置中填写扩展数据 JSON 路径</span></div>';
     else if (!capabilities.supplementalAvailable) emptyMessage = `<div class="surface empty-state tall" style="grid-column:1/-1"><i class="bi bi-database-x"></i><strong>扩展数据源当前不可用</strong><span>${this.escape(capabilities.supplementalError || '请检查文件路径和 JSON 格式')}</span></div>`;
-    $('#guild-list').html(guilds.length ? guilds.map((guild) => `<article class="guild-card" data-guild-id="${this.escape(guild.id)}"><span class="guild-emblem"><i class="bi bi-shield-shaded"></i></span><div><h3>${this.escape(guild.name)}</h3><p>等级 ${guild.level || '未知'} · ${guild.memberIds.length} 名成员${guild.palBoxes?.length ? ` · ${guild.palBoxes.length} 个据点` : ''}</p></div><i class="bi bi-chevron-right"></i></article>`).join('') : emptyMessage);
+    $('#guild-list').html(guilds.length ? guilds.map((guild) => {
+      const members = guild.memberIds.map((uid) => players.find((player) => player.uid === uid)).filter(Boolean);
+      const online = members.filter((player) => player.online).length;
+      const memberFaces = members.slice(0, 4).map((player) => `<span title="${this.escape(player.name)}">${this.escape((player.name || '?')[0])}</span>`).join('');
+      return `<article class="guild-card" data-guild-id="${this.escape(guild.id)}"><div class="guild-card-head"><span class="guild-emblem"><i class="bi bi-shield-shaded"></i></span><div><span class="guild-rank">GUILD · LV.${guild.level || '—'}</span><h3>${this.escape(guild.name)}</h3></div><i class="bi bi-arrow-up-right"></i></div><div class="guild-card-metrics"><div><small>成员</small><strong>${guild.memberIds.length}</strong></div><div><small>在线</small><strong class="online-value">${online}</strong></div><div><small>据点</small><strong>${guild.palBoxes?.length || 0}</strong></div><div><small>活跃帕鲁</small><strong>${guild.activeBasePalCount || 0}</strong></div></div><div class="guild-card-footer"><div class="member-faces">${memberFaces || '<span>—</span>'}</div><span>查看组织档案 <i class="bi bi-chevron-right"></i></span></div></article>`;
+    }).join('') : emptyMessage);
   }
 
   openPlayer(uid) {
@@ -142,6 +164,8 @@ window.DataModule = class DataModule {
     const player = snapshot?.players.find((item) => item.uid === String(uid));
     if (!player) return;
     $('#player-modal-title').text(player.name);
+    const initial = (player.name || '?').slice(0, 1).toUpperCase();
+    $('#player-profile-identity').html(`<div class="profile-avatar">${this.escape(initial)}<i class="${player.online ? 'online' : ''}"></i></div><div><span class="modal-kicker">PLAYER PROFILE</span><h2>${this.escape(player.name)}</h2><p>${this.escape(player.steamName || player.steam64 || '未绑定 Steam')} · ${this.escape(player.platform || '未知平台')}</p></div><div class="profile-highlight"><small>当前等级</small><strong>Lv.${player.level || 0}</strong>${player.levelGainToday ? `<span>今日 +${player.levelGainToday}</span>` : ''}</div><span class="status-badge ${player.online ? 'online' : ''}">${player.online ? '在线' : '离线'}</span>`);
     const values = [
       ['Steam 名称', player.steamName], ['等级', `${player.level || 0}${player.levelGainToday ? ` ↑${player.levelGainToday}` : ''}`],
       ['状态', player.online ? '在线' : '离线'], ['最后在线', this.time(player.lastOnlineAt)], ['登录平台', player.platform],
@@ -163,6 +187,10 @@ window.DataModule = class DataModule {
     const guild = snapshot?.guilds.find((item) => item.id === String(id));
     if (!guild) return;
     $('#guild-modal-title').text(guild.name);
+    const guildPlayers = guild.memberIds.map((uid) => snapshot.players.find((player) => player.uid === uid)).filter(Boolean);
+    const onlineCount = guildPlayers.filter((player) => player.online).length;
+    $('#guild-profile-identity').html(`<div class="profile-avatar guild-avatar"><i class="bi bi-shield-shaded"></i></div><div><span class="modal-kicker">GUILD PROFILE</span><h2>${this.escape(guild.name)}</h2><p>${guild.memberIds.length} 名成员 · ${onlineCount} 人在线 · ${guild.palBoxes?.length || 0} 个据点</p></div><div class="profile-highlight"><small>公会等级</small><strong>Lv.${guild.level || '—'}</strong><span>组织档案</span></div>`);
+    $('#guild-online-count').text(`${onlineCount} 人在线`);
     const baseLocations = (guild.palBoxes || []).map((base) => `${base.name}: ${Math.round(base.x)}, ${Math.round(base.y)}`).join(' · ');
     $('#guild-summary').html(`<div class="detail-item"><small>公会等级</small><strong>${guild.level || '未知'}</strong></div><div class="detail-item"><small>成员数量</small><strong>${guild.memberIds.length}</strong></div><div class="detail-item"><small>据点数量</small><strong>${guild.palBoxes?.length || 0}</strong></div><div class="detail-item"><small>据点帕鲁</small><strong>${guild.activeBasePalCount || 0} / ${guild.basePalCount || 0} 活跃</strong></div>${baseLocations ? `<div class="detail-item span-2"><small>据点坐标</small><strong>${this.escape(baseLocations)}</strong></div>` : ''}`);
     $('#guild-members').html(guild.memberIds.map((uid) => {
@@ -175,14 +203,56 @@ window.DataModule = class DataModule {
   renderCollection(selector, source, label, dataSourceAvailable) {
     const values = Array.isArray(source) ? source : [];
     const render = (query = '', sort = 'name') => {
-      let items = values.filter((item) => JSON.stringify(item).toLowerCase().includes(query.toLowerCase()));
-      items.sort(sort === 'count-desc' ? (a, b) => Number(b.count || b.quantity || 0) - Number(a.count || a.quantity || 0) : (a, b) => String(a.name || a.palName || a.itemName || '').localeCompare(String(b.name || b.palName || b.itemName || ''), 'zh-CN'));
+      let items = values.filter((item) => {
+        const metadata = label === '帕鲁' ? this.palInfo(item) : null;
+        return `${JSON.stringify(item)} ${metadata?.nameZh || ''} ${metadata?.nameEn || ''} ${metadata?.paldeckNo || ''}`.toLowerCase().includes(query.toLowerCase());
+      });
+      items.sort(sort === 'count-desc'
+        ? (a, b) => Number(b.level || b.count || b.quantity || 0) - Number(a.level || a.count || a.quantity || 0)
+        : (a, b) => this.collectionName(a, label).localeCompare(this.collectionName(b, label), 'zh-CN'));
       const emptyText = dataSourceAvailable ? `暂无${label}缓存` : `${label}数据源未配置`;
-      $(`${selector} .collection-items`).html(items.length ? items.map((item) => `<article><i class="bi bi-${label === '帕鲁' ? 'stars' : 'box'}"></i><div><strong>${this.escape(item.name || item.palName || item.itemName || '未知')}${item.active ? ' · 跟随中' : ''}</strong><small>${this.escape(item.level ? `Lv.${item.level}${item.maxHp ? ` · HP ${item.hp}/${item.maxHp}` : ''}` : `数量 ${item.count || item.quantity || 1}`)}</small></div></article>`).join('') : `<div class="empty-state"><strong>${emptyText}</strong><span>${dataSourceAvailable ? '' : '请在服务器连接中设置扩展 JSON 路径'}</span></div>`);
+      $(`${selector} .collection-items`).html(items.length ? items.map((item) => this.collectionCard(item, label)).join('') : `<div class="empty-state"><strong>${emptyText}</strong><span>${dataSourceAvailable ? '' : '请在服务器连接中设置扩展 JSON 路径'}</span></div>`);
     };
     $(selector).html(`<div class="collection-toolbar"><input class="form-control" placeholder="筛选${label}"><select class="form-select"><option value="name">按名称</option><option value="count-desc">按数量/等级</option></select></div><div class="collection-items"></div>`);
     $(`${selector} input, ${selector} select`).on('input change', () => render($(`${selector} input`).val(), $(`${selector} select`).val()));
     render();
+  }
+
+  palInfo(item) {
+    const candidates = [item.characterId, item.CharacterID, item.characterID, item.palId, item.speciesId, item.id];
+    for (const id of candidates.filter(Boolean)) {
+      const metadata = this.palMetadata[id] || this.palMetadataLower.get(String(id).toLowerCase());
+      if (metadata) return metadata;
+    }
+    return null;
+  }
+
+  collectionName(item, label) {
+    if (label !== '帕鲁') return String(item.name || item.itemName || '未知');
+    const metadata = this.palInfo(item);
+    return metadata?.nameZh || item.palName || item.name || item.characterId || '未知帕鲁';
+  }
+
+  collectionCard(item, label) {
+    if (label !== '帕鲁') {
+      const name = item.name || item.itemName || '未知';
+      const detail = item.level ? `Lv.${item.level}${item.maxHp ? ` · HP ${item.hp}/${item.maxHp}` : ''}` : `数量 ${item.count || item.quantity || 1}`;
+      return `<article><i class="bi bi-box"></i><div><strong>${this.escape(name)}</strong><small>${this.escape(detail)}</small></div></article>`;
+    }
+    const metadata = this.palInfo(item);
+    const speciesName = metadata?.nameZh || item.palName || item.characterId || item.name || '未知帕鲁';
+    const rawName = String(item.name || '');
+    const identifiers = [item.characterId, item.CharacterID, item.palId, item.speciesId, item.id, metadata?.canonicalId, metadata?.nameZh, metadata?.nameEn].filter(Boolean).map(String);
+    const nickname = rawName && rawName !== '未知帕鲁' && !identifiers.some((value) => value.toLowerCase() === rawName.toLowerCase()) ? rawName : '';
+    const title = nickname ? `${nickname} · ${speciesName}` : speciesName;
+    const deck = metadata?.paldeckNo ? `No.${metadata.paldeckNo} · ` : '';
+    const status = item.active ? ' · 跟随中' : '';
+    const detail = item.level ? `${deck}Lv.${item.level}${item.maxHp ? ` · HP ${item.hp}/${item.maxHp}` : ''}${status}` : `${deck}数量 ${item.count || item.quantity || 1}${status}`;
+    const iconFile = metadata?.icon?.split('/').at(-1);
+    const visual = iconFile
+      ? `<img class="collection-pal-icon" src="${this.escape(new URL(iconFile, window.PalIconBaseUrl).href)}" alt="">`
+      : '<i class="bi bi-stars"></i>';
+    return `<article>${visual}<div><strong title="${this.escape(title)}">${this.escape(title)}</strong><small title="${this.escape(detail)}">${this.escape(detail)}</small></div></article>`;
   }
 
   playerComparator(sort) {
@@ -191,6 +261,10 @@ window.DataModule = class DataModule {
     if (sort === 'ping') return (a, b) => (a.ping || Infinity) - (b.ping || Infinity);
     if (sort === 'lastOnline') return (a, b) => new Date(b.lastOnlineAt || 0) - new Date(a.lastOnlineAt || 0);
     return (a, b) => Number(b.online) - Number(a.online) || a.name.localeCompare(b.name, 'zh-CN');
+  }
+
+  overviewStats(stats) {
+    return stats.map(([label, value, tone]) => `<div class="overview-stat ${tone || ''}"><small>${label}</small><strong>${value}</strong></div>`).join('');
   }
 
   playerCard(player) {

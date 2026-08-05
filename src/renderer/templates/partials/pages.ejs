@@ -14,13 +14,13 @@
 <section class="app-page" data-page-panel="servers"><div class="section-heading"><div><h2>服务器</h2><p>管理 REST、RCON 连接和本地 JSON 缓存。</p></div><button class="btn btn-primary" data-action="new-connection"><i class="bi bi-plus-lg me-2"></i>添加服务器</button></div><div id="server-list" class="server-list"></div></section>
 
 <section class="app-page" data-page-panel="players">
-  <div class="section-heading"><div><h2>玩家档案</h2><p>在线与历史玩家数据；点击玩家查看帕鲁、物品及详细信息。</p></div><button class="btn btn-surface" data-action="sync"><i class="bi bi-arrow-clockwise me-2"></i>同步</button></div>
+  <div class="directory-hero"><div><span class="page-eyebrow">PLAYER INTELLIGENCE</span><h2>玩家档案</h2><p>掌握在线状态、成长进度与公会归属，快速定位值得关注的玩家。</p></div><div id="player-overview" class="directory-overview"></div></div>
   <div class="data-toolbar"><div class="search-box"><i class="bi bi-search"></i><input id="player-filter" placeholder="筛选名称、UID、Steam64、公会或 IP"></div><select id="player-status-filter" class="form-select"><option value="all">全部状态</option><option value="online">仅在线</option><option value="offline">仅离线</option></select><select id="player-sort" class="form-select"><option value="online">在线优先</option><option value="name">按玩家名称</option><option value="level-desc">等级从高到低</option><option value="ping">Ping 从低到高</option><option value="lastOnline">最后在线</option></select></div>
   <div id="players-grid" class="player-grid"></div>
 </section>
 
 <section class="app-page" data-page-panel="guilds">
-  <div class="section-heading"><div><h2>公会</h2><p>浏览公会等级与成员；玩家和公会支持双向跳转。</p></div><button class="btn btn-surface" data-action="sync"><i class="bi bi-arrow-clockwise me-2"></i>同步</button></div>
+  <div class="directory-hero guild-directory-hero"><div><span class="page-eyebrow">GUILD COMMAND CENTER</span><h2>公会管理</h2><p>从成员活跃度与据点规模出发，快速判断每个组织的运营状态。</p></div><div id="guild-overview" class="directory-overview"></div></div>
   <div class="data-toolbar"><div class="search-box"><i class="bi bi-search"></i><input id="guild-filter" placeholder="筛选公会名称或成员"></div><select id="guild-sort" class="form-select"><option value="name">按名称</option><option value="level-desc">等级从高到低</option><option value="members-desc">成员数从多到少</option></select></div>
   <div id="guild-list" class="guild-grid"></div>
 </section>
