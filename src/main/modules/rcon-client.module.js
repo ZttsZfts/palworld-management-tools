@@ -3,7 +3,7 @@
 const net = require('node:net');
 const crypto = require('node:crypto');
 
-/** Minimal Source RCON client used by Palworld dedicated servers. */
+/** 幻兽帕鲁专用服务器使用的 Source RCON 客户端。 */
 class RconClient {
   execute(connection, command) {
     const normalizedCommand = String(command || '').trim();
@@ -27,7 +27,7 @@ class RconClient {
         if (error) reject(error); else resolve(result);
       };
 
-      // TCP connect timeout and RCON response timeout are reported separately.
+      // 分别报告 TCP 连接超时与 RCON 响应超时，方便定位端口和服务状态。
       socket.setTimeout(6000);
       socket.setNoDelay(true);
       socket.once('timeout', () => finish(new Error('\u0052\u0043\u004f\u004e \u8fde\u63a5\u8d85\u65f6\uff0c\u8bf7\u68c0\u67e5\u4e3b\u673a\u5730\u5740\u3001\u7aef\u53e3\u548c\u9632\u706b\u5899')));
@@ -41,7 +41,7 @@ class RconClient {
         buffer = Buffer.concat([buffer, chunk]);
         while (buffer.length >= 4 && buffer.length >= buffer.readInt32LE(0) + 4) {
           const size = buffer.readInt32LE(0);
-          // Invalid packet sizes indicate a non-RCON service on the configured port.
+          // 数据包长度异常通常表示配置的端口并非 RCON 服务端口。
           if (size < 10 || size > 4 * 1024 * 1024) return finish(new Error('\u0052\u0043\u004f\u004e \u8fd4\u56de\u4e86\u65e0\u6548\u6570\u636e\uff0c\u8bf7\u68c0\u67e5\u7aef\u53e3'));
           const packet = buffer.subarray(4, size + 4);
           buffer = buffer.subarray(size + 4);

@@ -10,10 +10,11 @@
     "dev": "electron . --dev",
     "start": "electron .",
     "check": "node scripts/check.js",
+    "test": "node scripts/check.js && node scripts/test-movement-paths.js",
     "build:win": "electron-builder --win nsis",
     "build": "npm run check && npm run build:win"
   },
-  "keywords": ["electron", "palworld", "rcon", "server-manager"],
+  "keywords": ["electron", "palworld", "rcon", "server-manager", "game-data"],
   "license": "MIT",
   "dependencies": {
     "bootstrap": "^5.3.8",

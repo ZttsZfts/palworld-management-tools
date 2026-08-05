@@ -11,9 +11,8 @@ const IPC = Object.freeze({
   MOVEMENT_GET: 'movement:get'
 });
 
-// Convert the main-process result envelope back into a normal Promise API.
-// The throw happens in the renderer boundary, so expected network failures do
-// not appear as uncaught Electron main-process handler errors.
+// 将主进程返回的结果还原为普通 Promise。网络异常在渲染进程边界抛出，
+// 避免 Electron 把可预期的离线或超时误报为主进程 IPC 异常。
 async function invokeResult(channel, payload) {
   const result = await ipcRenderer.invoke(channel, payload);
   if (!result?.success) {

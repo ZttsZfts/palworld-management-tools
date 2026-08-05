@@ -24,11 +24,12 @@ class SnapshotRepository {
   async save(connectionId, snapshot) {
     const previous = await this.get(connectionId);
     const today = this.dateKey(new Date());
-    const previousPlayers = new Map((previous.players || []).map((player) => [player.uid, player]));
+    const normalizeId = (value) => String(value || '').replace(/-/g, '').toLowerCase();
+    const previousPlayers = new Map((previous.players || []).map((player) => [normalizeId(player.uid), player]));
 
     // 0 点切换每日等级基线；同一天内始终与当日首次记录对比。
     snapshot.players = (snapshot.players || []).map((player) => {
-      const old = previousPlayers.get(player.uid);
+      const old = previousPlayers.get(normalizeId(player.uid));
       const baseline = old?.levelBaseline?.date === today
         ? old.levelBaseline
         : { date: today, level: old?.level ?? player.level ?? 0 };

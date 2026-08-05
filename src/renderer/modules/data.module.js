@@ -90,11 +90,15 @@ window.DataModule = class DataModule {
     $('#metric-uptime').text(this.duration(server.uptimeSeconds));
     $('#metric-day').text(server.day ? `第 ${server.day} 天` : '—');
     $('#metric-fps').text(server.fps ? server.fps.toFixed(1) : '—');
+    $('#metric-fps').attr('title', server.averageFps ? `平均 FPS ${server.averageFps.toFixed(1)}` : '');
     $('#metric-frame-time').text(server.frameTime ? `${server.frameTime.toFixed(2)} ms` : '—');
     if (snapshot?.online) {
       $('#hero-status').text('服务器在线').parent().addClass('online');
       $('#cache-badge').text(`刚刚同步 · ${server.latency || 0} ms`).addClass('success');
-      $('#health-content').html(`<i class="bi bi-check-circle text-success"></i><strong>远程数据已写入本地缓存</strong><span>${this.time(snapshot.cachedAt)}</span>`);
+      const gameData = snapshot.capabilities?.gameDataAvailable
+        ? ` · Game Data ${snapshot.capabilities.gameDataActors || 0} Actor`
+        : ' · Game Data 未启用/不可用';
+      $('#health-content').html(`<i class="bi bi-check-circle text-success"></i><strong>远程数据已写入本地缓存</strong><span>${this.time(snapshot.cachedAt)}${gameData}</span>`);
       $('.connection-dot').addClass('online');
     } else this.markCached();
   }
@@ -130,7 +134,7 @@ window.DataModule = class DataModule {
     let emptyMessage = '<div class="surface empty-state tall" style="grid-column:1/-1"><i class="bi bi-shield"></i><strong>没有符合条件的公会缓存</strong></div>';
     if (!capabilities.supplementalConfigured) emptyMessage = '<div class="surface empty-state tall" style="grid-column:1/-1"><i class="bi bi-database-add"></i><strong>公会数据源未配置</strong><span>在服务器连接设置中填写扩展数据 JSON 路径</span></div>';
     else if (!capabilities.supplementalAvailable) emptyMessage = `<div class="surface empty-state tall" style="grid-column:1/-1"><i class="bi bi-database-x"></i><strong>扩展数据源当前不可用</strong><span>${this.escape(capabilities.supplementalError || '请检查文件路径和 JSON 格式')}</span></div>`;
-    $('#guild-list').html(guilds.length ? guilds.map((guild) => `<article class="guild-card" data-guild-id="${this.escape(guild.id)}"><span class="guild-emblem"><i class="bi bi-shield-shaded"></i></span><div><h3>${this.escape(guild.name)}</h3><p>等级 ${guild.level || '未知'} · ${guild.memberIds.length} 名成员</p></div><i class="bi bi-chevron-right"></i></article>`).join('') : emptyMessage);
+    $('#guild-list').html(guilds.length ? guilds.map((guild) => `<article class="guild-card" data-guild-id="${this.escape(guild.id)}"><span class="guild-emblem"><i class="bi bi-shield-shaded"></i></span><div><h3>${this.escape(guild.name)}</h3><p>等级 ${guild.level || '未知'} · ${guild.memberIds.length} 名成员${guild.palBoxes?.length ? ` · ${guild.palBoxes.length} 个据点` : ''}</p></div><i class="bi bi-chevron-right"></i></article>`).join('') : emptyMessage);
   }
 
   openPlayer(uid) {
@@ -142,9 +146,12 @@ window.DataModule = class DataModule {
       ['Steam 名称', player.steamName], ['等级', `${player.level || 0}${player.levelGainToday ? ` ↑${player.levelGainToday}` : ''}`],
       ['状态', player.online ? '在线' : '离线'], ['最后在线', this.time(player.lastOnlineAt)], ['登录平台', player.platform],
       ['玩家 UID', player.uid], ['Steam64', player.steam64], ['IP', player.ip], ['Ping', player.ping ? `${player.ping} ms` : '未知'],
-      ['坐标', player.x || player.y ? `X ${player.x}, Y ${player.y}` : '未知'], ['所在公会', player.guildName || '无']
+      ['生命值', player.maxHp ? `${player.hp} / ${player.maxHp}` : '未知'],
+      ['坐标', player.x || player.y ? `X ${player.x}, Y ${player.y}, Z ${player.z ?? '—'}` : '未知'],
+      ['朝向', Number.isFinite(player.rotation) ? `${player.rotation.toFixed(1)}°` : '未知'],
+      ['当前跟随帕鲁', player.activePalCount || 0], ['所在公会', player.guildName || '无', true]
     ];
-    $('#player-summary').html(values.map(([label, value], index) => `<div class="detail-item"><small>${label}</small>${index === 10 && player.guildId ? `<button data-guild-id="${this.escape(player.guildId)}">${this.escape(value || '未知')}</button>` : `<strong>${this.escape(value || '未知')}</strong>`}</div>`).join(''));
+    $('#player-summary').html(values.map(([label, value, guildLink]) => `<div class="detail-item"><small>${label}</small>${guildLink && player.guildId ? `<button data-guild-id="${this.escape(player.guildId)}">${this.escape(value || '未知')}</button>` : `<strong>${this.escape(value ?? '未知')}</strong>`}</div>`).join(''));
     const supplementalAvailable = Boolean(snapshot.capabilities?.supplementalAvailable);
     this.renderCollection('#player-pals', player.pals, '帕鲁', supplementalAvailable);
     this.renderCollection('#player-items', player.items, '物品', supplementalAvailable);
@@ -156,7 +163,8 @@ window.DataModule = class DataModule {
     const guild = snapshot?.guilds.find((item) => item.id === String(id));
     if (!guild) return;
     $('#guild-modal-title').text(guild.name);
-    $('#guild-summary').html(`<div class="detail-item"><small>公会等级</small><strong>${guild.level || '未知'}</strong></div><div class="detail-item"><small>成员数量</small><strong>${guild.memberIds.length}</strong></div>`);
+    const baseLocations = (guild.palBoxes || []).map((base) => `${base.name}: ${Math.round(base.x)}, ${Math.round(base.y)}`).join(' · ');
+    $('#guild-summary').html(`<div class="detail-item"><small>公会等级</small><strong>${guild.level || '未知'}</strong></div><div class="detail-item"><small>成员数量</small><strong>${guild.memberIds.length}</strong></div><div class="detail-item"><small>据点数量</small><strong>${guild.palBoxes?.length || 0}</strong></div><div class="detail-item"><small>据点帕鲁</small><strong>${guild.activeBasePalCount || 0} / ${guild.basePalCount || 0} 活跃</strong></div>${baseLocations ? `<div class="detail-item span-2"><small>据点坐标</small><strong>${this.escape(baseLocations)}</strong></div>` : ''}`);
     $('#guild-members').html(guild.memberIds.map((uid) => {
       const player = snapshot.players.find((item) => item.uid === uid);
       return `<button data-player-id="${this.escape(uid)}"><span class="player-avatar">${this.escape((player?.name || '?')[0])}</span><span><strong>${this.escape(player?.name || uid)}</strong><small>${player?.online ? '在线' : `最后在线 ${this.time(player?.lastOnlineAt)}`}</small></span><i class="bi bi-chevron-right"></i></button>`;
@@ -170,7 +178,7 @@ window.DataModule = class DataModule {
       let items = values.filter((item) => JSON.stringify(item).toLowerCase().includes(query.toLowerCase()));
       items.sort(sort === 'count-desc' ? (a, b) => Number(b.count || b.quantity || 0) - Number(a.count || a.quantity || 0) : (a, b) => String(a.name || a.palName || a.itemName || '').localeCompare(String(b.name || b.palName || b.itemName || ''), 'zh-CN'));
       const emptyText = dataSourceAvailable ? `暂无${label}缓存` : `${label}数据源未配置`;
-      $(`${selector} .collection-items`).html(items.length ? items.map((item) => `<article><i class="bi bi-${label === '帕鲁' ? 'stars' : 'box'}"></i><div><strong>${this.escape(item.name || item.palName || item.itemName || '未知')}</strong><small>${this.escape(item.level ? `Lv.${item.level}` : `数量 ${item.count || item.quantity || 1}`)}</small></div></article>`).join('') : `<div class="empty-state"><strong>${emptyText}</strong><span>${dataSourceAvailable ? '' : '请在服务器连接中设置扩展 JSON 路径'}</span></div>`);
+      $(`${selector} .collection-items`).html(items.length ? items.map((item) => `<article><i class="bi bi-${label === '帕鲁' ? 'stars' : 'box'}"></i><div><strong>${this.escape(item.name || item.palName || item.itemName || '未知')}${item.active ? ' · 跟随中' : ''}</strong><small>${this.escape(item.level ? `Lv.${item.level}${item.maxHp ? ` · HP ${item.hp}/${item.maxHp}` : ''}` : `数量 ${item.count || item.quantity || 1}`)}</small></div></article>`).join('') : `<div class="empty-state"><strong>${emptyText}</strong><span>${dataSourceAvailable ? '' : '请在服务器连接中设置扩展 JSON 路径'}</span></div>`);
     };
     $(selector).html(`<div class="collection-toolbar"><input class="form-control" placeholder="筛选${label}"><select class="form-select"><option value="name">按名称</option><option value="count-desc">按数量/等级</option></select></div><div class="collection-items"></div>`);
     $(`${selector} input, ${selector} select`).on('input change', () => render($(`${selector} input`).val(), $(`${selector} select`).val()));

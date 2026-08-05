@@ -4,9 +4,8 @@ const fs = require('node:fs/promises');
 const path = require('node:path');
 
 /**
- * Stores movement points as daily JSONL files per player. Appending one line is
- * cheaper than rewriting a large JSON array every three seconds, and separate
- * files let the reader load only requested players/dates.
+ * 按玩家和日期将移动坐标写入 JSONL 文件。
+ * 每次追加一行比频繁重写大数组更轻量，查询时也只需读取指定玩家和日期。
  */
 class MovementPathRepository {
   constructor(app) {
@@ -22,13 +21,20 @@ class MovementPathRepository {
     const writes = players.filter((player) => player.online && player.hasLocation).map(async (player) => {
       const pointKey = `${connectionId}:${player.uid}`;
       const previous = this.lastPoints.get(pointKey);
-      // Stationary samples add no path information. Keep one heartbeat per
-      // minute so an extended stationary period remains visible in history.
+      // 静止坐标不重复写入，但每分钟保留一个心跳点，便于还原长时间停留。
       if (previous && previous.x === player.x && previous.y === player.y && capturedAt - previous.t < 60000) return;
       this.lastPoints.set(pointKey, { x: player.x, y: player.y, t: capturedAt });
       const playerDirectory = path.join(connectionDirectory, this.safe(player.uid));
       await fs.mkdir(playerDirectory, { recursive: true });
-      const point = { t: capturedAt, x: player.x, y: player.y, n: player.name };
+      const point = {
+        t: capturedAt,
+        x: player.x,
+        y: player.y,
+        n: player.name,
+        uid: player.uid,
+        userId: player.userId || '',
+        steam64: player.steam64 || ''
+      };
       await fs.appendFile(path.join(playerDirectory, `${date}.jsonl`), `${JSON.stringify(point)}\n`, 'utf8');
     });
     await Promise.all(writes);
@@ -38,7 +44,8 @@ class MovementPathRepository {
   async getPaths(connectionId, options = {}) {
     const now = Date.now();
     const requestedSince = Math.max(now - this.retentionMs, Number(options.since) || now - 24 * 60 * 60 * 1000);
-    const requestedIds = Array.isArray(options.playerIds) ? new Set(options.playerIds.map(String)) : null;
+    const requestedIds = Array.isArray(options.playerIds) ? new Set(options.playerIds.map((value) => this.normalize(value))) : null;
+    const identities = this.identities(options.players);
     const base = path.join(this.directory, this.safe(connectionId));
     const directories = await this.directories(base);
     let paths = [];
@@ -46,12 +53,12 @@ class MovementPathRepository {
     let overloaded = false;
 
     for (const directory of directories) {
-      const uid = directory.name;
-      if (requestedIds?.size && !requestedIds.has(uid)) continue;
       const remainingBudget = requestedIds?.size ? Infinity : Math.max(1, 20001 - totalPoints);
-      const points = await this.readPlayer(path.join(base, uid), requestedSince, remainingBudget);
+      const points = await this.readPlayer(path.join(base, directory.name), requestedSince, remainingBudget);
+      const identity = this.resolveIdentity(directory.name, points.at(-1), identities);
+      if (requestedIds?.size && !requestedIds.has(identity.uid)) continue;
       totalPoints += points.length;
-      if (points.length) paths.push({ uid, name: points.at(-1).n || uid, points });
+      if (points.length) paths.push({ uid: identity.uid, name: identity.name, points });
       if (!requestedIds?.size && totalPoints > 20000) { overloaded = true; break; }
     }
 
@@ -60,9 +67,11 @@ class MovementPathRepository {
       paths = [];
       for (const directory of directories) {
         const points = await this.readPlayer(path.join(base, directory.name), effectiveSince);
-        if (points.length) paths.push({ uid: directory.name, name: points.at(-1).n || directory.name, points });
+        const identity = this.resolveIdentity(directory.name, points.at(-1), identities);
+        if (points.length) paths.push({ uid: identity.uid, name: identity.name, points });
       }
     }
+    paths = this.mergeIdentityPaths(paths);
     const result = paths.map((item) => {
       const visible = item.points.filter((point) => point.t >= effectiveSince);
       return {
@@ -87,7 +96,7 @@ class MovementPathRepository {
           const point = JSON.parse(line);
           if (point.t >= since) points.push(point);
           if (points.length > limit) return points;
-        } catch { /* Ignore an incomplete final append. */ }
+        } catch { /* 忽略尚未写完的最后一行。 */ }
       }
     }
     return points.sort((a, b) => a.t - b.t);
@@ -111,13 +120,73 @@ class MovementPathRepository {
     return Array.from({ length: limit }, (_value, index) => points[Math.round(index * step)]);
   }
 
+  identities(players) {
+    const values = Array.isArray(players) ? players : [];
+    const nameCounts = new Map();
+    const byAlias = new Map();
+    for (const player of values) {
+      const name = String(player?.name || '').trim();
+      const nameKey = name.toLowerCase();
+      if (nameKey) nameCounts.set(nameKey, (nameCounts.get(nameKey) || 0) + 1);
+    }
+    for (const player of values) {
+      const identity = {
+        uid: this.normalize(player?.uid),
+        name: String(player?.name || player?.uid || '').trim()
+      };
+      for (const alias of this.identityAliases(player).filter((value) => !value.startsWith('name:'))) byAlias.set(alias, identity);
+      const nameKey = identity.name.toLowerCase();
+      if (nameKey && nameCounts.get(nameKey) === 1) byAlias.set(`name:${nameKey}`, identity);
+    }
+    return byAlias;
+  }
+
+  resolveIdentity(directoryUid, point, identities) {
+    const fallbackUid = this.normalize(directoryUid);
+    const fallbackName = String(point?.n || directoryUid);
+    const aliases = this.identityAliases({
+      uid: point?.uid || directoryUid,
+      userId: point?.userId,
+      steam64: point?.steam64,
+      name: fallbackName
+    });
+    const current = aliases.map((alias) => identities.get(alias)).find(Boolean);
+    return current || { uid: fallbackUid, name: fallbackName };
+  }
+
+  identityAliases(player) {
+    const aliases = [];
+    const uid = this.normalize(player?.uid);
+    const userId = String(player?.userId || '').trim().toLowerCase();
+    const steam64 = String(player?.steam64 || '').trim();
+    const name = String(player?.name || '').trim().toLowerCase();
+    if (uid) aliases.push(`uid:${uid}`);
+    if (userId) aliases.push(`user:${userId}`);
+    if (steam64) aliases.push(`steam:${steam64}`);
+    if (name) aliases.push(`name:${name}`);
+    return aliases;
+  }
+
+  mergeIdentityPaths(paths) {
+    const merged = new Map();
+    for (const pathItem of paths) {
+      const existing = merged.get(pathItem.uid);
+      if (existing) existing.points.push(...pathItem.points);
+      else merged.set(pathItem.uid, { ...pathItem, points: [...pathItem.points] });
+    }
+    return [...merged.values()].map((item) => ({
+      ...item,
+      points: item.points.sort((left, right) => left.t - right.t)
+    }));
+  }
+
   async cleanupOccasionally(connectionId, now) {
     if (now - (this.lastCleanup.get(connectionId) || 0) < 60 * 60 * 1000) return;
     this.lastCleanup.set(connectionId, now);
     const base = path.join(this.directory, this.safe(connectionId));
     const cutoff = new Date(now);
     cutoff.setHours(0, 0, 0, 0);
-    cutoff.setDate(cutoff.getDate() - 6); // Today plus six previous calendar days.
+    cutoff.setDate(cutoff.getDate() - 6); // 保留今天及此前六个自然日。
     for (const player of await this.directories(base)) {
       const playerDirectory = path.join(base, player.name);
       for (const file of await this.files(playerDirectory)) {
@@ -130,6 +199,7 @@ class MovementPathRepository {
   async directories(directory) { try { return (await fs.readdir(directory, { withFileTypes: true })).filter((entry) => entry.isDirectory()); } catch (error) { if (error.code === 'ENOENT') return []; throw error; } }
   async files(directory) { try { return (await fs.readdir(directory, { withFileTypes: true })).filter((entry) => entry.isFile()); } catch (error) { if (error.code === 'ENOENT') return []; throw error; } }
   safe(value) { return String(value).replace(/[^a-zA-Z0-9_-]/g, '_'); }
+  normalize(value) { return String(value || '').replace(/-/g, '').toLowerCase(); }
   dateKey(date) { return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`; }
 }
 

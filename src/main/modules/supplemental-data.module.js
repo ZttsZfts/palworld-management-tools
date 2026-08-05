@@ -5,9 +5,8 @@ const path = require('node:path');
 const { PalworldLevelJsonModule } = require('./palworld-level-json.module');
 
 /**
- * Reads optional advanced data exported by a save parser or companion service.
- * Keeping this provider separate prevents unofficial fields from contaminating
- * the official REST model and makes a future Level.sav provider replaceable.
+ * 读取存档解析器或配套服务导出的扩展数据。
+ * 扩展数据与官方 REST 数据分开处理，便于单独更换存档解析方式。
  */
 class SupplementalDataModule {
   constructor(app) {
@@ -19,8 +18,7 @@ class SupplementalDataModule {
     if (!configuredPath) return { configured: false, available: false, players: [], guilds: [] };
     const filePath = path.resolve(configuredPath);
     try {
-      // Raw Level.json exports can exceed 800 MB. They are streamed into a
-      // compact sidecar cache instead of being passed to JSON.parse at once.
+      // Level.json 通常很大，因此先流式转换为紧凑缓存，不能直接整体交给 JSON.parse。
       const document = this.levelJson.isLevelJson(filePath)
         ? await this.levelJson.read(filePath)
         : JSON.parse(await fs.readFile(filePath, 'utf8'));

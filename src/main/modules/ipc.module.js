@@ -41,8 +41,7 @@ class IpcModule {
     this.channels.push(channel);
   }
 
-  // Expected network failures are returned as data so Electron does not print
-  // "Error occurred in handler" for normal offline/timeout conditions.
+  // 将可预期的网络失败作为结果返回，避免 Electron 把离线或超时打印成 IPC 处理异常。
   handleResult(channel, listener) {
     this.handle(channel, async (...args) => {
       try { return { success: true, value: await listener(...args) }; }
