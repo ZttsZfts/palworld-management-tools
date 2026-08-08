@@ -3,10 +3,6 @@
 const fs = require('node:fs/promises');
 const path = require('node:path');
 
-/**
- * 按玩家和日期将移动坐标写入 JSONL 文件。
- * 每次追加一行比频繁重写大数组更轻量，查询时也只需读取指定玩家和日期。
- */
 class MovementPathRepository {
   constructor(app) {
     this.directory = path.join(app.getPath('userData'), 'movement-paths');
@@ -21,7 +17,6 @@ class MovementPathRepository {
     const writes = players.filter((player) => player.online && player.hasLocation).map(async (player) => {
       const pointKey = `${connectionId}:${player.uid}`;
       const previous = this.lastPoints.get(pointKey);
-      // 静止坐标不重复写入，但每分钟保留一个心跳点，便于还原长时间停留。
       if (previous && previous.x === player.x && previous.y === player.y && capturedAt - previous.t < 60000) return;
       this.lastPoints.set(pointKey, { x: player.x, y: player.y, t: capturedAt });
       const playerDirectory = path.join(connectionDirectory, this.safe(player.uid));
@@ -96,7 +91,7 @@ class MovementPathRepository {
           const point = JSON.parse(line);
           if (point.t >= since) points.push(point);
           if (points.length > limit) return points;
-        } catch { /* 忽略尚未写完的最后一行。 */ }
+        } catch {  }
       }
     }
     return points.sort((a, b) => a.t - b.t);
@@ -186,7 +181,7 @@ class MovementPathRepository {
     const base = path.join(this.directory, this.safe(connectionId));
     const cutoff = new Date(now);
     cutoff.setHours(0, 0, 0, 0);
-    cutoff.setDate(cutoff.getDate() - 6); // 保留今天及此前六个自然日。
+    cutoff.setDate(cutoff.getDate() - 6);
     for (const player of await this.directories(base)) {
       const playerDirectory = path.join(base, player.name);
       for (const file of await this.files(playerDirectory)) {

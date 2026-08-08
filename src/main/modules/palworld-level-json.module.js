@@ -7,10 +7,6 @@ const crypto = require('node:crypto');
 
 const ZERO_GUID = '00000000-0000-0000-0000-000000000000';
 
-/**
- * 流式转换 PalworldSaveTools 导出的 Level.json，避免一次性占用大量内存。
- * 这里只解析界面需要的映射数组，每个元素完成转换后立即释放。
- */
 class PalworldLevelJsonModule {
   constructor(cacheDirectory = '') {
     this.jobs = new Map();
@@ -29,8 +25,6 @@ class PalworldLevelJsonModule {
       : `${filePath}.palstudio-cache.json`;
     const cached = await this.readFreshCache(cachePath, sourceStat);
     if (cached) return cached;
-
-    // 同一文件只允许一个解析任务，防止自动同步重复启动大文件扫描。
     if (!this.jobs.has(filePath)) {
       const job = this.extract(filePath, sourceStat, cachePath)
         .finally(() => this.jobs.delete(filePath));
@@ -44,7 +38,6 @@ class PalworldLevelJsonModule {
       const document = JSON.parse(await fsp.readFile(cachePath, 'utf8'));
       if (document.sourceSize === sourceStat.size && document.sourceMtimeMs === sourceStat.mtimeMs) return document;
     } catch (_) {
-      // 缓存不存在、已过期或内容不完整时，重新读取 Level.json。
     }
     return null;
   }
@@ -123,7 +116,6 @@ class PalworldLevelJsonModule {
     return document;
   }
 
-  /** 逐个读取指定映射中 value 数组的顶层对象。 */
   async readMap(filePath, mapName, visit) {
     const stream = fs.createReadStream(filePath, { encoding: 'utf8', highWaterMark: 1024 * 1024 });
     const marker = `\"${mapName}\"`;

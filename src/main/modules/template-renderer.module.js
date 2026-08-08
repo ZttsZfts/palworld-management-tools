@@ -12,13 +12,13 @@ class TemplateRenderer {
   }
 
   async renderApplication() {
-    const template = path.join(this.appPath, 'src/renderer/templates/app.ejs');
+    const template = path.join(this.appPath, 'src/public/common/app.ejs');
     const outputDirectory = path.join(this.app.getPath('userData'), 'renderer');
     const output = path.join(outputDirectory, 'index.html');
     await fs.mkdir(outputDirectory, { recursive: true });
     const asset = (relativePath) => pathToFileURL(path.join(this.appPath, relativePath)).href;
     const html = await ejs.renderFile(template, {
-      appName: 'Palworld Server Studio',
+      appName: '幻兽帕鲁管理工具',
       asset,
       pages: [
         { id: 'dashboard', icon: 'grid-1x2', label: '概览' },

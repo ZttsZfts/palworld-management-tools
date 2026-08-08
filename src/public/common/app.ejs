@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' file:; script-src 'self' file:; style-src 'self' file: 'unsafe-inline'; font-src 'self' file: data:; img-src 'self' file: data:">
+  <title><%= appName %></title>
+  <link rel="stylesheet" href="<%= asset('node_modules/bootstrap/dist/css/bootstrap.min.css') %>">
+  <link rel="stylesheet" href="<%= asset('node_modules/bootstrap-icons/font/bootstrap-icons.min.css') %>">
+  <link rel="stylesheet" href="<%= asset('src/public/common/common.css') %>">
+  <% pages.forEach((page) => { %><link rel="stylesheet" href="<%= asset(`src/public/page/${page.id}/${page.id}.css`) %>"><% }) %>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-mark"><i class="bi bi-hexagon-fill"></i></span>
+        <span><strong>幻兽帕鲁</strong><small>管理工具</small></span>
+      </div>
+      <nav class="app-nav" aria-label="主导航">
+        <span class="nav-caption">工作台</span>
+        <% pages.forEach((page, index) => { %>
+          <button class="nav-item <%= index === 0 ? 'active' : '' %>" data-page="<%= page.id %>" type="button">
+            <i class="bi bi-<%= page.icon %>"></i><span><%= page.label %></span>
+          </button>
+        <% }) %>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="connection-dot"></div>
+        <div><strong id="sidebar-server">未选择服务器</strong><small id="sidebar-status">等待连接</small></div>
+      </div>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <div>
+          <span class="breadcrumb-label">幻兽帕鲁管理工具</span>
+          <h1 id="page-title">服务器概览</h1>
+        </div>
+        <div class="topbar-actions">
+          <select id="active-connection" class="form-select form-select-sm" aria-label="当前服务器">
+            <option value="">选择服务器</option>
+          </select>
+          <button class="icon-button" data-action="sync" type="button" title="刷新"><i class="bi bi-arrow-clockwise"></i></button>
+          <button class="btn btn-primary btn-sm px-3" data-action="new-connection" type="button"><i class="bi bi-plus-lg me-1"></i>添加服务器</button>
+        </div>
+      </header>
+      <div class="content-area">
+        <% pages.forEach((page) => { %><%- include(`../page/${page.id}/${page.id}`) %><% }) %>
+      </div>
+    </main>
+  </div>
+
+  <div class="toast-container position-fixed top-0 end-0 p-4">
+    <div id="app-toast" class="toast app-toast border-0" role="status">
+      <div class="d-flex"><div class="toast-body"></div><button class="btn-close btn-close-white m-auto me-2" data-bs-dismiss="toast"></button></div>
+    </div>
+  </div>
+  <%- include('modals') %>
+
+  <script src="<%= asset('node_modules/jquery/dist/jquery.min.js') %>"></script>
+  <script src="<%= asset('node_modules/bootstrap/dist/js/bootstrap.bundle.min.js') %>"></script>
+  <script src="<%= asset('src/public/common/state.js') %>"></script>
+  <script src="<%= asset('src/public/common/modal.js') %>"></script>
+  <script src="<%= asset('src/public/common/navigation.js') %>"></script>
+  <script src="<%= asset('src/public/config/pal-metadata.js') %>"></script>
+  <script src="<%= asset('src/public/common/data.js') %>"></script>
+  <% pages.forEach((page) => { %><script src="<%= asset(`src/public/page/${page.id}/${page.id}.js`) %>"></script><% }) %>
+  <script src="<%= asset('src/public/common/app.js') %>"></script>
+  <script src="<%= asset('src/public/common/main.js') %>"></script>
+</body>
+</html>

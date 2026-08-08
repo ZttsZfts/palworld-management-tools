@@ -29,7 +29,6 @@ class WindowModule {
     });
     window.once('ready-to-show', () => window.show());
     await window.loadFile(htmlPath);
-    // 开发命令传入 --dev 时打开独立 DevTools，便于查看主界面控制台和网络错误。
     if (process.argv.includes('--dev')) window.webContents.openDevTools({ mode: 'detach' });
     return window;
   }

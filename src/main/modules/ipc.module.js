@@ -40,8 +40,6 @@ class IpcModule {
     ipcMain.handle(channel, listener);
     this.channels.push(channel);
   }
-
-  // 将可预期的网络失败作为结果返回，避免 Electron 把离线或超时打印成 IPC 处理异常。
   handleResult(channel, listener) {
     this.handle(channel, async (...args) => {
       try { return { success: true, value: await listener(...args) }; }

@@ -1,17 +1,5 @@
 node_modules/
-.pnpm-store/
 release/
-dist/
-dist-renderer/
-.vite/
 *.log
 .env
 .idea/
-.movement-path-test-data/
-src/renderer/assets/images/maps/*-z6-16384.png
-*.sav
-Level.json
-game-data.json
-connections.json
-server-cache/
-movement-paths/

@@ -10,9 +10,6 @@ const IPC = Object.freeze({
   SNAPSHOT_SYNC: 'snapshot:sync', BROADCAST_SEND: 'broadcast:send',
   MOVEMENT_GET: 'movement:get'
 });
-
-// 将主进程返回的结果还原为普通 Promise。网络异常在渲染进程边界抛出，
-// 避免 Electron 把可预期的离线或超时误报为主进程 IPC 异常。
 async function invokeResult(channel, payload) {
   const result = await ipcRenderer.invoke(channel, payload);
   if (!result?.success) {

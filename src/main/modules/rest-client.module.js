@@ -20,7 +20,7 @@ class RestClient {
     });
     const text = await response.text();
     let data = text;
-    try { data = text ? JSON.parse(text) : null; } catch { /* 返回原始文本 */ }
+    try { data = text ? JSON.parse(text) : null; } catch {  }
     if (!response.ok) throw new Error(`REST ${response.status}: ${text || response.statusText}`);
     return { status: response.status, data };
   }

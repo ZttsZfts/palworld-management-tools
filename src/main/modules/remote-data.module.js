@@ -1,9 +1,5 @@
 'use strict';
 
-/**
- * 汇总官方 REST 实时数据与存档扩展数据。
- * 两类数据各自保留边界，避免同名字段相互覆盖。
- */
 class RemoteDataModule {
   constructor(restClient, snapshotRepository, supplementalData, movementPaths) {
     this.restClient = restClient;
@@ -20,7 +16,6 @@ class RemoteDataModule {
       this.restClient.request(connection, { endpoint: '/players' }),
       this.restClient.request(connection, { endpoint: '/metrics' }),
       this.supplementalData.read(connection),
-      // 未启用 Game Data 时仍要继续同步其他 REST 接口。
       this.getGameData(connection)
     ]);
     const previous = await this.snapshots.get(connection.id);
@@ -103,7 +98,6 @@ class RemoteDataModule {
       this.gameDataBackoff.delete(connection.id);
       return result;
     } catch (error) {
-      // 接口不可用时暂停探测一分钟，避免每轮同步都等待超时。
       this.gameDataBackoff.set(connection.id, Date.now() + 60000);
       return { data: null, error };
     }
@@ -242,7 +236,6 @@ class RemoteDataModule {
     if (userId && userId !== 'none') aliases.push(`user:${userId}`);
     if (uid && uid !== 'none' && uid !== this.normalizeId('00000000-0000-0000-0000-000000000000')) aliases.push(`uid:${uid}`);
     if (instanceId && instanceId !== 'none') aliases.push(`instance:${instanceId}`);
-    // 只有在记录缺少稳定标识时才按名称匹配，尽量避免合并同名玩家。
     if (!aliases.length && player.name) aliases.push(`name:${String(player.name).trim().toLowerCase()}`);
     return aliases;
   }

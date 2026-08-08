@@ -3,10 +3,6 @@
 const fs = require('node:fs/promises');
 const path = require('node:path');
 
-/**
- * 每台服务器使用独立 JSON 文件持久化快照。这样远程服务器离线后，
- * UI 仍可读取最后一次成功同步的服务器、玩家、公会、帕鲁与物品信息。
- */
 class SnapshotRepository {
   constructor(app) {
     this.directory = path.join(app.getPath('userData'), 'server-cache');
@@ -26,8 +22,6 @@ class SnapshotRepository {
     const today = this.dateKey(new Date());
     const normalizeId = (value) => String(value || '').replace(/-/g, '').toLowerCase();
     const previousPlayers = new Map((previous.players || []).map((player) => [normalizeId(player.uid), player]));
-
-    // 0 点切换每日等级基线；同一天内始终与当日首次记录对比。
     snapshot.players = (snapshot.players || []).map((player) => {
       const old = previousPlayers.get(normalizeId(player.uid));
       const baseline = old?.levelBaseline?.date === today
@@ -47,7 +41,6 @@ class SnapshotRepository {
   }
 
   pathOf(connectionId) {
-    // UUID/内部 ID 之外的字符不允许参与文件路径，防止路径穿越。
     const safeId = String(connectionId).replace(/[^a-zA-Z0-9_-]/g, '_');
     return path.join(this.directory, `${safeId}.json`);
   }

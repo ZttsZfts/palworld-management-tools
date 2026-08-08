@@ -1,18 +1,15 @@
 {
   "name": "palworld-management-tools",
-  "productName": "Palworld Server Studio",
+  "productName": "幻兽帕鲁管理工具",
   "version": "0.3.3",
-  "description": "现代化幻兽帕鲁服务器远程管理工具",
-  "author": "Palworld Server Studio Contributors",
+  "description": "幻兽帕鲁服务器远程管理工具",
+  "author": "palworld-management-tools Contributors",
   "main": "src/main/main.js",
   "type": "commonjs",
   "scripts": {
     "dev": "electron . --dev",
     "start": "electron .",
-    "check": "node scripts/check.js",
-    "test": "node scripts/check.js && node scripts/test-movement-paths.js",
-    "build:win": "electron-builder --win nsis",
-    "build": "npm run check && npm run build:win"
+    "build": "electron-builder"
   },
   "keywords": ["electron", "palworld", "rcon", "server-manager", "game-data"],
   "license": "MIT",
@@ -27,8 +24,8 @@
     "electron-builder": "^26.0.12"
   },
   "build": {
-    "appId": "com.palworld.serverstudio",
-    "productName": "Palworld Server Studio",
+    "appId": "tools.palworld.management",
+    "productName": "幻兽帕鲁管理工具",
     "directories": {
       "output": "release/windows"
     },
