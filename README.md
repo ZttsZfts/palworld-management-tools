@@ -43,18 +43,30 @@
 
 ## 软件截图
 
-### 服务器概览
-
-> 图片占位：上传前请插入不包含服务器地址、群号、玩家标识或真实运营数据的脱敏截图。
-
-### 玩家与公会
-
-> 图片占位：玩家与公会页面截图（必须使用虚构数据）。
-
-### 移动轨迹与控制台
-
-> 图片占位：移动轨迹与 RCON 控制台截图（必须使用虚构数据）。
-
+<table>
+  <tr>
+    <th>服务器概览</th>
+    <th>玩家管理</th>
+  </tr>
+  <tr>
+    <td><img src="docs/images/dashboard.png" alt="服务器概览" width="420"></td>
+    <td><img src="docs/images/players.png" alt="玩家管理" width="420"></td>
+  </tr>
+  <tr>
+    <th>公会管理</th>
+    <th>移动轨迹</th>
+  </tr>
+  <tr>
+    <td><img src="docs/images/guilds.png" alt="公会管理" width="420"></td>
+    <td><img src="docs/images/movement.png" alt="移动轨迹" width="420"></td>
+  </tr>
+  <tr>
+    <th colspan="2">RCON 控制台</th>
+  </tr>
+  <tr>
+    <td colspan="2" align="center"><img src="docs/images/console.png" alt="RCON 控制台" width="420"></td>
+  </tr>
+</table>
 
 ---
 
