@@ -12,7 +12,7 @@
     "build": "electron-builder"
   },
   "keywords": ["electron", "palworld", "rcon", "server-manager", "game-data"],
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE",
   "dependencies": {
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1",

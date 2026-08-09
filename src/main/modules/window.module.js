@@ -11,6 +11,7 @@ class WindowModule {
 
   async create() {
     const htmlPath = await this.templateRenderer.renderApplication();
+    const light = this.templateRenderer.theme() === 'light';
     const window = new BrowserWindow({
       width: 1440,
       height: 900,
@@ -18,8 +19,8 @@ class WindowModule {
       minHeight: 700,
       show: false,
       titleBarStyle: 'hidden',
-      titleBarOverlay: { color: '#0b1019', symbolColor: '#9aa8bb', height: 42 },
-      backgroundColor: '#0b1019',
+      titleBarOverlay: { color: light ? '#f3f6fb' : '#0b1019', symbolColor: light ? '#253147' : '#9aa8bb', height: 42 },
+      backgroundColor: light ? '#f3f6fb' : '#0b1019',
       webPreferences: {
         preload: path.join(__dirname, '../../preload/index.js'),
         contextIsolation: true,

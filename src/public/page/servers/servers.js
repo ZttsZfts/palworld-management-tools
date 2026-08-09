@@ -18,7 +18,7 @@ window.ConnectionsModule = class ConnectionsModule {
     const connections = await this.api.connections.list();
     this.state.set('connections', connections);
     const current = this.state.get('activeConnectionId');
-    if (!current && connections.length) this.state.set('activeConnectionId', connections[0].id);
+    if (!connections.some((item) => item.id === current)) this.state.set('activeConnectionId', connections[0]?.id || '');
     this.render();
   }
 

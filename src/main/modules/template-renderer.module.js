@@ -6,19 +6,24 @@ const path = require('node:path');
 const { pathToFileURL } = require('node:url');
 
 class TemplateRenderer {
-  constructor(app) {
+  constructor(app, storagePaths, settings) {
     this.app = app;
     this.appPath = app.getAppPath();
+    this.storagePaths = storagePaths;
+    this.settings = settings;
   }
+
+  theme() { return this.settings.get().theme; }
 
   async renderApplication() {
     const template = path.join(this.appPath, 'src/public/common/app.ejs');
-    const outputDirectory = path.join(this.app.getPath('userData'), 'renderer');
+    const outputDirectory = this.storagePaths.renderer();
     const output = path.join(outputDirectory, 'index.html');
     await fs.mkdir(outputDirectory, { recursive: true });
     const asset = (relativePath) => pathToFileURL(path.join(this.appPath, relativePath)).href;
     const html = await ejs.renderFile(template, {
       appName: '幻兽帕鲁管理工具',
+      theme: this.settings.get().theme,
       asset,
       pages: [
         { id: 'dashboard', icon: 'grid-1x2', label: '概览' },

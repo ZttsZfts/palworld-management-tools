@@ -20,8 +20,9 @@ class PalworldLevelJsonModule {
   async read(filePath) {
     const sourceStat = await fsp.stat(filePath);
     const cacheName = `${crypto.createHash('sha1').update(filePath).digest('hex')}.json`;
-    const cachePath = this.cacheDirectory
-      ? path.join(this.cacheDirectory, cacheName)
+    const cacheDirectory = typeof this.cacheDirectory === 'function' ? this.cacheDirectory() : this.cacheDirectory;
+    const cachePath = cacheDirectory
+      ? path.join(cacheDirectory, cacheName)
       : `${filePath}.palstudio-cache.json`;
     const cached = await this.readFreshCache(cachePath, sourceStat);
     if (cached) return cached;

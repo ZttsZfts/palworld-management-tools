@@ -4,9 +4,9 @@ const fs = require('node:fs/promises');
 const path = require('node:path');
 
 class SnapshotRepository {
-  constructor(app) {
-    this.directory = path.join(app.getPath('userData'), 'server-cache');
-  }
+  constructor(storagePaths) { this.storagePaths = storagePaths; }
+
+  get directory() { return this.storagePaths.snapshots(); }
 
   async get(connectionId) {
     try {

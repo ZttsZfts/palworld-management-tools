@@ -4,12 +4,14 @@ const fs = require('node:fs/promises');
 const path = require('node:path');
 
 class MovementPathRepository {
-  constructor(app) {
-    this.directory = path.join(app.getPath('userData'), 'movement-paths');
+  constructor(storagePaths) {
+    this.storagePaths = storagePaths;
     this.lastCleanup = new Map();
     this.lastPoints = new Map();
     this.retentionMs = 7 * 24 * 60 * 60 * 1000;
   }
+
+  get directory() { return this.storagePaths.movement(); }
 
   async record(connectionId, players, capturedAt = Date.now()) {
     const date = this.dateKey(new Date(capturedAt));

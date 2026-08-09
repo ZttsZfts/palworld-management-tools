@@ -1,16 +1,31 @@
 'use strict';
 
-const { ipcMain } = require('electron');
+const { dialog, ipcMain } = require('electron');
 const IPC = require('../../shared/ipc');
 
 class IpcModule {
-  constructor({ app, repository, restClient, rconClient, snapshots, remoteData, movementPaths }) {
-    Object.assign(this, { app, repository, restClient, rconClient, snapshots, remoteData, movementPaths });
+  constructor({ app, repository, restClient, rconClient, snapshots, remoteData, movementPaths, settings }) {
+    Object.assign(this, { app, repository, restClient, rconClient, snapshots, remoteData, movementPaths, settings });
     this.channels = [];
   }
 
   register() {
     this.handle(IPC.APP_GET_INFO, () => ({ name: this.app.getName(), version: this.app.getVersion(), platform: process.platform }));
+    this.handle(IPC.SETTINGS_GET, () => this.settings.get());
+    this.handleResult(IPC.SETTINGS_SAVE, async (event, value) => {
+      const saved = await this.settings.save(value);
+      const window = event.sender.getOwnerBrowserWindow();
+      if (window && typeof window.setTitleBarOverlay === 'function') {
+        const light = saved.theme === 'light';
+        window.setTitleBarOverlay({ color: light ? '#f3f6fb' : '#0b1019', symbolColor: light ? '#253147' : '#9aa8bb', height: 42 });
+        window.setBackgroundColor(light ? '#f3f6fb' : '#0b1019');
+      }
+      return saved;
+    });
+    this.handleResult(IPC.STORAGE_SELECT_DIRECTORY, async () => {
+      const result = await dialog.showOpenDialog({ title: '选择应用数据根目录', properties: ['openDirectory', 'createDirectory'] });
+      return result.canceled ? '' : result.filePaths[0];
+    });
     this.handle(IPC.CONNECTION_LIST, () => this.repository.list());
     this.handle(IPC.CONNECTION_SAVE, (_event, connection) => this.repository.save(connection));
     this.handle(IPC.CONNECTION_REMOVE, (_event, id) => this.repository.remove(id));

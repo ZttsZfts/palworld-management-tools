@@ -1,13 +1,15 @@
 <!doctype html>
-<html lang="zh-CN" data-bs-theme="dark">
+<html lang="zh-CN" data-bs-theme="<%= theme %>" data-theme="<%= theme %>">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="<%= theme === 'light' ? '#f3f6fb' : '#0a0e16' %>">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self' file:; script-src 'self' file:; style-src 'self' file: 'unsafe-inline'; font-src 'self' file: data:; img-src 'self' file: data:">
   <title><%= appName %></title>
   <link rel="stylesheet" href="<%= asset('node_modules/bootstrap/dist/css/bootstrap.min.css') %>">
   <link rel="stylesheet" href="<%= asset('node_modules/bootstrap-icons/font/bootstrap-icons.min.css') %>">
   <link rel="stylesheet" href="<%= asset('src/public/common/common.css') %>">
+  <link rel="stylesheet" href="<%= asset('src/public/common/light-theme.css') %>">
   <% pages.forEach((page) => { %><link rel="stylesheet" href="<%= asset(`src/public/page/${page.id}/${page.id}.css`) %>"><% }) %>
 </head>
 <body>

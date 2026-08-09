@@ -1,0 +1,33 @@
+html[data-theme="light"] .app-page :is(h2,h3,strong),html[data-theme="light"] .modal-body :is(h2,h3,strong){color:var(--text)}
+html[data-theme="light"] :is(.hero-panel,.profile-cover) :is(h2,h3,strong){color:#fff}
+html[data-theme="light"] .btn-close-white{filter:none}
+html[data-theme="light"] .command-chips button{color:#4d3fc0;border-color:#d4cff5;background:#f0edff}
+html[data-theme="light"] .empty-state{color:#687588}
+html[data-theme="light"] .empty-state strong{color:#344158}
+html[data-theme="light"] .modal-kicker,html[data-theme="light"] .page-eyebrow{color:#5c4ccc}
+html[data-theme="light"] .profile-cover .modal-kicker{color:#eef0ff}
+html[data-theme="light"] .topbar .form-select{color:#253147;border-color:#cbd3df;background-color:#fff}
+html[data-theme="light"] .data-toolbar{border-color:#d6dde7;background:#fff;box-shadow:0 7px 22px rgba(26,39,63,.05)}
+html[data-theme="light"] .search-box{color:#647187;border-color:#cbd3df;background:#f7f9fc}
+html[data-theme="light"] .search-box input{color:#172033!important;background:transparent!important}
+html[data-theme="light"] .search-box input::placeholder{color:#778397}
+html[data-theme="light"] .server-meta span{color:#4d5a6e;border:1px solid #d8dee8;background:#eef2f7}
+html[data-theme="light"] .platform-pill{color:#435168;border-color:#ccd4df;background:#edf1f6}
+html[data-theme="light"] .console-panel{color:#243147;border-color:#cbd3df;background:#fff;box-shadow:0 16px 38px rgba(26,39,63,.1)}
+html[data-theme="light"] .console-toolbar{color:#536177;border-bottom-color:#d8dee8;background:#f1f4f8}
+html[data-theme="light"] .console-output{color:#253147;background:#fff}
+html[data-theme="light"] .console-muted{color:#6b788c}
+html[data-theme="light"] .console-command-line{color:#5747c8}
+html[data-theme="light"] .console-error{color:#c92f43}
+html[data-theme="light"] .console-input{border-top-color:#d8dee8;background:#f5f7fa}
+html[data-theme="light"] .console-input input{color:#172033}
+html[data-theme="light"] .console-input input::placeholder{color:#778397}
+html[data-theme="light"] .console-input button{color:#46546a}
+html[data-theme="light"] .console-input kbd{color:#fff;background:#46546a}
+html[data-theme="light"] .empty-illustration{color:#5b4bcd;border-color:#d5dce7;background:#ece9ff}
+.directory-overview-bar{position:relative;z-index:auto;width:100%;min-width:0;margin:-5px 0 16px;padding:10px;overflow:visible;border:1px solid var(--line);background:var(--surface);backdrop-filter:none;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.directory-overview-bar .overview-stat{min-width:0}
+html[data-theme="light"] .directory-overview-bar{border-color:#d5dce7;background:#fff;box-shadow:0 8px 24px rgba(26,39,63,.06)}
+html[data-theme="light"] .directory-overview-bar .overview-stat small{color:#647187}
+html[data-theme="light"] .directory-overview-bar .overview-stat strong{color:#253147}
+html[data-theme="light"] .directory-overview-bar .overview-stat.live strong{color:#13815f}

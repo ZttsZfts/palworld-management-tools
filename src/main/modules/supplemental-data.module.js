@@ -5,8 +5,8 @@ const path = require('node:path');
 const { PalworldLevelJsonModule } = require('./palworld-level-json.module');
 
 class SupplementalDataModule {
-  constructor(app) {
-    this.levelJson = new PalworldLevelJsonModule(app ? path.join(app.getPath('userData'), 'level-json-cache') : '');
+  constructor(storagePaths) {
+    this.levelJson = new PalworldLevelJsonModule(() => storagePaths.levelJson());
   }
 
   async read(connection) {

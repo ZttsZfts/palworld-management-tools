@@ -11,5 +11,8 @@ module.exports = Object.freeze({
   SNAPSHOT_GET: 'snapshot:get',
   SNAPSHOT_SYNC: 'snapshot:sync',
   BROADCAST_SEND: 'broadcast:send',
-  MOVEMENT_GET: 'movement:get'
+  MOVEMENT_GET: 'movement:get',
+  SETTINGS_GET: 'settings:get',
+  SETTINGS_SAVE: 'settings:save',
+  STORAGE_SELECT_DIRECTORY: 'storage:select-directory'
 });

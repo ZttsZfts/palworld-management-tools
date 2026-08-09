@@ -1,5 +1,6 @@
 <section class="app-page" data-page-panel="players">
-  <div class="directory-hero"><div><span class="page-eyebrow">玩家数据</span><h2>玩家信息</h2><p>查看玩家在线状态、等级进度、所属公会，快速定位需要关注的玩家。</p></div><div id="player-overview" class="directory-overview"></div></div>
+  <div class="directory-hero"><div><span class="page-eyebrow">玩家数据</span><h2>玩家信息</h2><p>查看玩家在线状态、等级进度、所属公会。</p></div></div>
+  <div id="player-overview" class="directory-overview directory-overview-bar"></div>
   <div class="data-toolbar"><div class="search-box"><i class="bi bi-search"></i><input id="player-filter" placeholder="搜索昵称、UID、Steam64 账号、公会名称或 IP 地址"></div><select id="player-status-filter" class="form-select"><option value="all">全部玩家</option><option value="online">只看在线玩家</option><option value="offline">只看离线玩家</option></select><select id="player-sort" class="form-select"><option value="online">在线玩家优先</option><option value="name">按昵称排序</option><option value="level-desc">等级由高至低</option><option value="ping">延迟由低至高</option><option value="lastOnline">按最后上线时间</option></select></div>
   <div id="players-grid" class="player-grid"></div>
 </section>

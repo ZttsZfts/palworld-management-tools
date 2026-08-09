@@ -1,6 +1,6 @@
 'use strict';
 
-const { BrowserWindow } = require('electron');
+const { BrowserWindow, safeStorage } = require('electron');
 const { ConfigRepository } = require('./config-repository.module');
 const { IpcModule } = require('./ipc.module');
 const { RconClient } = require('./rcon-client.module');
@@ -11,6 +11,8 @@ const { SupplementalDataModule } = require('./supplemental-data.module');
 const { MovementPathRepository } = require('./movement-path-repository.module');
 const { TemplateRenderer } = require('./template-renderer.module');
 const { WindowModule } = require('./window.module');
+const { StoragePaths } = require('./storage-paths.module');
+const { SettingsRepository } = require('./settings-repository.module');
 
 class AppRuntime {
   constructor(app) {
@@ -20,11 +22,13 @@ class AppRuntime {
   }
 
   initialize() {
-    const repository = new ConfigRepository(this.app);
-    const snapshots = new SnapshotRepository(this.app);
+    const storagePaths = new StoragePaths(this.app);
+    const settings = new SettingsRepository(this.app, storagePaths);
+    const repository = new ConfigRepository(storagePaths, safeStorage);
+    const snapshots = new SnapshotRepository(storagePaths);
     const restClient = new RestClient();
-    const movementPaths = new MovementPathRepository(this.app);
-    const renderer = new TemplateRenderer(this.app);
+    const movementPaths = new MovementPathRepository(storagePaths);
+    const renderer = new TemplateRenderer(this.app, storagePaths, settings);
     this.windowModule = new WindowModule(this.app, renderer);
     this.ipc = new IpcModule({
       app: this.app,
@@ -33,7 +37,8 @@ class AppRuntime {
       rconClient: new RconClient(),
       snapshots,
       movementPaths,
-      remoteData: new RemoteDataModule(restClient, snapshots, new SupplementalDataModule(this.app), movementPaths)
+      settings,
+      remoteData: new RemoteDataModule(restClient, snapshots, new SupplementalDataModule(storagePaths), movementPaths)
     });
   }
 

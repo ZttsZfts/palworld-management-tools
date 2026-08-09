@@ -5,14 +5,21 @@ const path = require('node:path');
 const crypto = require('node:crypto');
 
 class ConfigRepository {
-  constructor(app) {
-    this.filePath = path.join(app.getPath('userData'), 'connections.json');
+  constructor(storagePaths, credentialStorage = null) {
+    this.storagePaths = storagePaths;
+    this.credentialStorage = credentialStorage;
   }
+
+  get filePath() { return this.storagePaths.connections(); }
 
   async list() {
     try {
       const data = JSON.parse(await fs.readFile(this.filePath, 'utf8'));
-      return Array.isArray(data) ? data : [];
+      if (!Array.isArray(data)) return [];
+      const connections = data.map((connection) => this.decrypt(connection));
+      const hasUnprotectedPassword = data.some((connection) => connection.password && !connection.encryptedPassword);
+      if (hasUnprotectedPassword && this.credentialStorage?.isEncryptionAvailable()) await this.write(connections);
+      return connections;
     } catch (error) {
       if (error.code === 'ENOENT') return [];
       throw error;
@@ -60,7 +67,32 @@ class ConfigRepository {
 
   async write(connections) {
     await fs.mkdir(path.dirname(this.filePath), { recursive: true });
-    await fs.writeFile(this.filePath, JSON.stringify(connections, null, 2), 'utf8');
+    await fs.writeFile(this.filePath, JSON.stringify(connections.map((connection) => this.encrypt(connection)), null, 2), 'utf8');
+  }
+
+  encrypt(connection) {
+    const stored = { ...connection };
+    if (!stored.password || !this.credentialStorage?.isEncryptionAvailable()) return stored;
+    stored.encryptedPassword = this.credentialStorage.encryptString(stored.password).toString('base64');
+    stored.credentialProtection = 'electron-safe-storage';
+    delete stored.password;
+    return stored;
+  }
+
+  decrypt(connection) {
+    if (!connection?.encryptedPassword) return connection;
+    if (!this.credentialStorage?.isEncryptionAvailable()) {
+      throw new Error('系统凭据保护当前不可用，无法读取已保存的服务器密码');
+    }
+    try {
+      const password = this.credentialStorage.decryptString(Buffer.from(connection.encryptedPassword, 'base64'));
+      const value = { ...connection, password };
+      delete value.encryptedPassword;
+      delete value.credentialProtection;
+      return value;
+    } catch (error) {
+      throw new Error(`服务器密码解密失败：${error.message}`);
+    }
   }
 }
 
