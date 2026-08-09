@@ -1,0 +1,48 @@
+{
+  "name": "palworld-management-tools",
+  "productName": "幻兽帕鲁管理工具",
+  "version": "0.3.3",
+  "description": "幻兽帕鲁服务器远程管理工具",
+  "author": "palworld-management-tools Contributors",
+  "main": "src/main/main.js",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "electron . --dev",
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "keywords": ["electron", "palworld", "rcon", "server-manager", "game-data"],
+  "license": "SEE LICENSE IN LICENSE",
+  "dependencies": {
+    "bootstrap": "^5.3.8",
+    "bootstrap-icons": "^1.13.1",
+    "ejs": "^3.1.10",
+    "jquery": "^3.7.1"
+  },
+  "devDependencies": {
+    "electron": "^37.2.4",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "tools.palworld.management",
+    "productName": "幻兽帕鲁管理工具",
+    "directories": {
+      "output": "release/windows"
+    },
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "asar": true,
+    "win": {
+      "target": ["nsis"],
+      "artifactName": "${productName}-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}

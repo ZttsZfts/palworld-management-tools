@@ -1,0 +1,29 @@
+<section class="app-page" data-page-panel="settings">
+  <div class="section-heading"><div><h2>系统设置</h2><p>配置界面主题与缓存文件位置。</p></div><span id="settings-save-state" class="soft-badge success">设置已同步</span></div>
+  <div class="settings-layout">
+    <article class="surface settings-card">
+      <div class="surface-header"><div><h3>外观主题</h3><p>主题会应用到全部页面。</p></div><i class="bi bi-palette setting-icon"></i></div>
+      <div class="theme-options" role="radiogroup" aria-label="界面主题">
+        <label class="theme-option"><input type="radio" name="theme" value="light"><span class="theme-preview light-preview"><i></i><b></b><em></em></span><span><strong>亮色模式</strong><small>浅色背景与深色文字</small></span></label>
+        <label class="theme-option"><input type="radio" name="theme" value="dark"><span class="theme-preview dark-preview"><i></i><b></b><em></em></span><span><strong>暗色模式</strong><small>深色背景与浅色文字</small></span></label>
+      </div>
+    </article>
+    <article class="surface settings-card storage-card">
+      <div class="surface-header"><div><h3>数据存储目录</h3><p>连接配置和所有应用缓存统一存放在此根目录下。</p></div><i class="bi bi-folder2-open setting-icon"></i></div>
+      <form id="storage-settings-form">
+        <label class="form-label" for="storage-root">数据根目录</label>
+        <div class="input-group"><input id="storage-root" class="form-control" autocomplete="off" placeholder="使用 Electron 默认用户数据目录"><button class="btn btn-surface" id="select-storage-root" type="button"><i class="bi bi-folder2-open me-1"></i>浏览</button></div>
+        <div class="storage-actions"><button class="btn btn-primary" type="submit"><i class="bi bi-check2 me-1"></i>保存目录</button><button class="btn btn-surface" id="reset-storage-root" type="button">恢复默认目录</button></div>
+      </form>
+      <div class="storage-warning"><i class="bi bi-info-circle"></i><span>切换目录不会自动移动或覆盖旧数据；保存后，所有后续读写使用新目录。</span></div>
+    </article>
+    <article class="surface settings-card storage-map-card">
+      <div class="surface-header"><div><h3>实际写入位置</h3><p>软件自身的全部配置与缓存写入，不包含手动选择。</p></div><i class="bi bi-diagram-3 setting-icon"></i></div>
+      <div id="storage-path-list" class="storage-path-list"></div>
+    </article>
+    <article class="surface settings-card about-card">
+      <div class="surface-header"><div><h3>关于本软件</h3><p>版本信息</p></div><i class="bi bi-info-circle setting-icon"></i></div>
+      <div class="about-logo"><span class="brand-mark"><i class="bi bi-hexagon-fill"></i></span><div><strong>幻兽帕鲁服务器管理工具</strong><small id="app-version">正在读取版本号…</small></div></div>
+    </article>
+  </div>
+</section>

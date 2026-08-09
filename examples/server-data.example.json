@@ -1,0 +1,27 @@
+{
+  "updatedAt": "2026-08-04T23:00:00.000Z",
+  "players": [
+    {
+      "playerId": "AFAFD830000000000000000000000000",
+      "steam64": "76561198000000000",
+      "platform": "Steam",
+      "lastOnlineAt": "2026-08-04T22:30:00.000Z",
+      "guildId": "guild-001",
+      "guildName": "帕鲁研究协会",
+      "pals": [
+        { "name": "疾旋鼬", "level": 35, "count": 1 }
+      ],
+      "items": [
+        { "name": "高级帕鲁球", "quantity": 48 }
+      ]
+    }
+  ],
+  "guilds": [
+    {
+      "id": "guild-001",
+      "name": "帕鲁研究协会",
+      "level": 12,
+      "memberIds": ["AFAFD830000000000000000000000000"]
+    }
+  ]
+}

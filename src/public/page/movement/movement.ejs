@@ -1,0 +1,12 @@
+<section class="app-page" data-page-panel="movement">
+  <div class="section-heading"><div><h2>玩家移动轨迹</h2><p>默认展示最近 24 小时轨迹；数据量过大时，自动切换为全体玩家近 5 分钟轨迹。</p></div><button class="btn btn-surface" data-action="refresh-movement"><i class="bi bi-arrow-clockwise me-2"></i>刷新轨迹</button></div>
+  <div class="movement-layout">
+    <aside class="surface movement-controls">
+      <div class="control-group"><label>时间范围</label><select id="movement-range" class="form-select"><option value="300000">最近 5 分钟</option><option value="3600000">最近 1 小时</option><option value="86400000" selected>最近 24 小时</option><option value="604800000">最近 7 天</option></select></div>
+      <div class="control-group"><label>瞬移判定距离</label><div class="input-group"><input id="jump-distance" class="form-control" type="number" min="100" step="100" value="100000"><span class="input-group-text">单位</span></div><small>默认判定规则：15 秒内位移过远即为异常；同步频率较低时会自动放宽判定时长</small></div>
+      <div class="control-group player-path-filter"><label>指定玩家查看</label><input id="movement-player-search" class="form-control" placeholder="搜索玩家"><div id="movement-player-list" class="movement-player-list"></div><small>不选择玩家，则绘制全部玩家轨迹</small></div>
+      <div id="movement-performance-note" class="performance-note"><i class="bi bi-lightning-charge"></i><span>轨迹数据经过主进程抽样后绘制展示</span></div>
+    </aside>
+    <article class="surface movement-map-card"><div class="movement-map-header"><div><strong>世界坐标轨迹图</strong><small id="movement-meta">等待加载轨迹数据</small></div><div class="movement-header-actions"><span><span class="anomaly-key"></span>疑似瞬移异常</span><div class="movement-zoom"><button class="icon-button" data-movement-zoom="0.8" title="缩小"><i class="bi bi-dash-lg"></i></button><span id="movement-zoom-value">100%</span><button class="icon-button" data-movement-zoom="1.25" title="放大"><i class="bi bi-plus-lg"></i></button><button class="icon-button" data-action="reset-movement-view" title="重置视图"><i class="bi bi-arrows-angle-contract"></i></button></div></div></div><div class="movement-canvas-wrap"><canvas id="movement-canvas"></canvas><div class="movement-map-tip"><i class="bi bi-mouse"></i>滚轮缩放 · 拖动平移 · 双击重置画面</div><div id="movement-empty" class="empty-state"><i class="bi bi-map"></i><strong>暂无移动轨迹记录</strong><span>完成服务器在线同步后，系统会自动记录玩家坐标轨迹</span></div></div><div id="movement-legend" class="movement-legend"></div></article>
+  </div>
+</section>
