@@ -20,7 +20,7 @@
     "jquery": "^3.7.1"
   },
   "devDependencies": {
-    "electron": "^37.2.4",
+    "electron": "^43.3.0",
     "electron-builder": "^26.0.12"
   },
   "build": {
