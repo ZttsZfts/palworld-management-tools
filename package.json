@@ -15,7 +15,7 @@
   "license": "SEE LICENSE IN LICENSE",
   "dependencies": {
     "bootstrap": "^5.3.8",
-    "bootstrap-icons": "^1.13.1",
+    "bootstrap-icons": "^1.13.2",
     "ejs": "^3.1.10",
     "jquery": "^3.7.1"
   },
